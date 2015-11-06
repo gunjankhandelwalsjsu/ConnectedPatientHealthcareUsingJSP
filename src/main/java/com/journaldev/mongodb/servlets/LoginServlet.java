@@ -19,10 +19,9 @@ import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.MongoClient;
 
-	@WebServlet("/login")
+	@WebServlet("/loginDoctor")
 	public class LoginServlet extends HttpServlet {
 
-		private static final long serialVersionUID = -7060758261496829905L;
 
 		protected void doPost(HttpServletRequest request,
 				HttpServletResponse response) throws ServletException, IOException {
@@ -41,10 +40,10 @@ import com.mongodb.MongoClient;
 			    
 				MongoClient mongo =(MongoClient) request.getServletContext()
 						.getAttribute("MONGO_CLIENT");
-				MongoDBPersonDAO personDAO = new MongoDBPersonDAO(mongo);
+				MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 				System.out.println(email);
-				Person_login person=personDAO.getPerson(email);
-			   if(person==null)
+				Doctor doctor=doctorDAO.getDoctor(email);
+			   if(doctor==null)
 				{
 					RequestDispatcher rd = getServletContext().getRequestDispatcher(
 							"/login.jsp");
@@ -52,18 +51,18 @@ import com.mongodb.MongoClient;
 					rd.forward(request, response);
 				}
 				else{
-				System.out.println("Person logged in Successfully with address="+person.getStreetAddress());
+				System.out.println("Person logged in Successfully with address="+doctor.getStreetAddress());
 				request.setAttribute("success", "Person loggedIn Successfully");
-				request.setAttribute("person", person);
+				request.setAttribute("doctor", doctor);
 				HttpSession session = request.getSession();
-				session.setAttribute("person", person);
-				 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
-			     List<Doctor> doctors = doctorDAO.readAllDoctor();
+				session.setAttribute("person", doctor);
+			/*     List<Doctor> doctors = doctorDAO.readAllDoctor();
 			     request.setAttribute("doctors", doctors);
 			     session.setAttribute("doctors", doctors);
+			     */
 
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
-						"/Profile.jsp");
+						"/ProfileDoctor.jsp");
 				rd.forward(request, response);
 				}
 			}

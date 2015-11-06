@@ -73,8 +73,9 @@
                     <li><a href="chart.jsp">Pie Chart</a></li>
                 </ul>
                 <ul class="navbar-brand navbar-right">
-                    <li><a href="login.jsp">Login</a></li>
-                    <li><a href="MainSignUp.jsp">SignUp</a></li>          
+                    <li><a href="login.jsp">Patient Login</a></li>
+                    <li><a href="loginDoctor.jsp">Doctor Login</a></li>     
+                    <li><a href="MainSignUp.jsp">SignUp</a></li>           
                 </ul>
             </div>
             
