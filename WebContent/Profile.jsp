@@ -42,7 +42,7 @@
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topic
                       <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Alergy</a></li>
+                        <li><a href="#">Allergy</a></li>
                         <li><a href="#">Blood Pressure</a></li>
                         <li><a href="#">Sugar</a></li> 
                       </ul>
@@ -90,31 +90,33 @@
         <strong style="color: green;"><c:out
                 value="${requestScope.success}"></c:out></strong>
     </c:if>
-<c:url value="/editPerson" var="editURL"></c:url>
+<c:url value="/editPatient" var="editURL"></c:url>
 <c:url value="/deletePerson" var="deleteURL"></c:url>
+<c:url value="/clickedProfile" var="clickedProfile"></c:url>
 
 
 	
 	<h3>Your Account</h3>
 
-<p>Hello, <c:out value="${person.firstName}"/>!</p>
- <a href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete</a>
-          <a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit</a>
+<p>Hello, <c:out value="${Patient.firstName}"/>!</p>
+          
           
           
       <%-- Edit Request --%>
-	<c:if test="${person ne null}">
+	<c:if test="${Patient ne null}">
         <form action='<c:out value="${editURL}"></c:out>' method="post">
- ID: <input type="text" value="${person.id}"
+ ID: <input type="text" value="${Patient.id}"
                 readonly="readonly" name="id"><br> 
-<center><h3>	First Name: <input type="text" value="${person.firstName}" name="firstName"><br></h3></center>
-<center><h3>	Last Name: <input type="text" value="${person.lastName}"   name="lastName"><br></h3></center>
-<center><h3>	Email: <input type="text" value="${person.email}" name="email"><br></h3></center>
-<center><h3>	Phone: <input type="text" value="${person.phone}"   name="phone"><br></h3></center>
-<center><h3>	Street Address: <input type="text" value="${person.streetAddress}" name="streetAddress"><br></h3></center>
-<center><h3>	City: <input type="text" value="${person.city}"   name="city"><br></h3></center>
-<center><h3>	Zip code: <input type="text" value="${person.zipCode}"   name="zipCode"><br></h3></center>
-			
+<center><h3>	First Name: <input type="text" value="${Patient.firstName}" name="firstName"><br></h3></center>
+<center><h3>	Last Name: <input type="text" value="${Patient.lastName}"   name="lastName"><br></h3></center>
+<center><h3>	Email: <input type="text" value="${Patient.email}" name="email"><br></h3></center>
+<center><h3>	Phone: <input type="text" value="${Patient.phone}"   name="phone"><br></h3></center>
+<center><h3>	Street Address: <input type="text" value="${Patient.streetAddress}" name="streetAddress"><br></h3></center>
+<center><h3>	City: <input type="text" value="${Patient.city}"   name="city"><br></h3></center>
+<center><h3>	Zip code: <input type="text" value="${Patient.zipCode}"   name="zipCode"><br></h3></center>
+<center><h3>	Doctor: <input type="text" value="${Patient.doctor.firstName}"   name="doctorName"><br></h3></center>
+<strong>Doctor</strong> ${sessionScope.Patient.doctor.firstName}
+<br><br>		
 <center><h3>	<input type="submit"	value="Save"></h3></center>
 		</form>
 	</c:if>    
@@ -123,11 +125,19 @@
           <c:url value="/deletePerson" var="deleteURL">
 		                <c:param name="id" value="${person.id}"></c:param>
 		  </c:url>
-		  <c:url value="/editPerson" var="editURL">
-						<c:param name="id" value="${person.id}"></c:param>
+		  <c:url value="/editPatient" var="editURL">
+						<c:param name="id" value="${Patient.id}"></c:param>
 		 </c:url>
-		  
+		 <a href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete</a>
+         <a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit</a>
+		  <c:if test="${doctor ne null}">
+	    Doctor: <input type="text" value="${doctor.firstName}"   name="firstName"><br>
+		
+		</c:if>    
 	</div>	  
+		
+          
+	
 		 
          
 				    <div class="col-md-3">
@@ -136,9 +146,15 @@
                     <a href="#" class="list-group-item active">
                         <h4 class="list-group-item-heading">List Of Doctors</h4>
                       </a>                               
-                <c:if test="${not empty requestScope.doctors}">
-                 <c:forEach items="${requestScope.doctors}" var="doctor">
-                    <a href="#" class="list-group-item"><c:out value="${doctor.firstName}"></c:out></a>                            
+                <c:if test="${not empty doctors}">
+                 <c:forEach items="${doctors}" var="doctor">
+                  <c:url value="/clickedProfile" var="clickedProfile">
+                   <c:param name="id" value="${doctor.id}"></c:param>
+                  </c:url>
+		               
+                    <a href="${clickedProfile}" class="list-group-item"><c:out value="${doctor.firstName}"></c:out></a>                            
+                 
+                            
                  </c:forEach>
                 </c:if>
 				   <button class="btn btn-danger btn-block btn-lg">Add Doctor</button>
@@ -153,7 +169,7 @@
         </div>
 
     </div>
-    
+   
     <!-- /.container -->
 
     <div class="container">

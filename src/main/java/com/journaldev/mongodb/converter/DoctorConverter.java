@@ -11,7 +11,7 @@ public class DoctorConverter {
 
 	// convert Doctor Object to MongoDB DBObject
 	// take special note of converting id String to ObjectId
-	public static DBObject toDBObject(Person_login p) {
+	public static DBObject toDBObject(Doctor p) {
 
 		BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
 				.append("firstName", p.getName())

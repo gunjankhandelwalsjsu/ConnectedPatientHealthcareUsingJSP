@@ -52,7 +52,7 @@ table,th,td {
 		<strong style="color: green;"><c:out
 				value="${requestScope.success}"></c:out></strong>
 	</c:if>
-	<c:url value="/login" var="addURL"></c:url>
+	<c:url value="/loginPatient" var="addURL"></c:url>
 
 	
 

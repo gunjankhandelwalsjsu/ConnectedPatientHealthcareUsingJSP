@@ -14,34 +14,35 @@ import javax.servlet.http.HttpSession;
 
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
 import com.journaldev.mongodb.dao.MongoDBPersonDAO;
+import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.MongoClient;
 
-@WebServlet("/showProfile")
+@WebServlet("/clickedProfile")
 public class ProfileServlet extends HttpServlet { 
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 	//	String id = ((ServletRequest) session).getParameter("id");
-		String id = request.getParameter("id");
+		String id = request.getParameter("id").toString();
 		if (id == null || "".equals(id)) {
 			throw new ServletException("id missing for operation");
 		}
 		System.out.println("Person profile requested with id=" + id);
 		MongoClient mongo = (MongoClient) request.getServletContext()
 				.getAttribute("MONGO_CLIENT");
-		MongoDBPersonDAO personDAO = new MongoDBPersonDAO(mongo);
-		Person_login p = new Person_login();
+		MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
+		Doctor p = new Doctor();
 		p.setId(id);
-		p = personDAO.readPerson(p);
-		request.setAttribute("person", p);
+		p = doctorDAO.readDoctor(p);
+		request.setAttribute("doctor", p);
+	     List<Doctor> doctors = doctorDAO.readAllDoctor();
+	     request.setAttribute("doctors", doctors);
+	     session.setAttribute("doctors", doctors);
 
-			session.setAttribute("person", p);
-
-	       
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(
-				"/profile.jsp");
+				"/ProfileClicked.jsp");
 		rd.forward(request, response);
 	}
 

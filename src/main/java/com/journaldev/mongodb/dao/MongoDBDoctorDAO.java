@@ -25,7 +25,7 @@ public class MongoDBDoctorDAO {
 		this.col = mongo.getDB("journaldev").getCollection("Doctors");
 	}
 
-	public Person_login createDoctor(Person_login p) {
+	public Doctor createDoctor(Doctor p) {
 		DBObject doc = DoctorConverter.toDBObject(p);
 		this.col.insert(doc);
 		ObjectId id = (ObjectId) doc.get("_id");
@@ -33,7 +33,7 @@ public class MongoDBDoctorDAO {
 		return p;
 	}
 
-	public void updateDoctor(Person_login p) {
+	public void updateDoctor(Doctor p) {
 		DBObject query = BasicDBObjectBuilder.start()
 				.append("_id", new ObjectId(p.getId())).get();
 		this.col.update(query, DoctorConverter.toDBObject(p));
@@ -56,12 +56,15 @@ public class MongoDBDoctorDAO {
 		this.col.remove(query);
 	}
 
-	public Doctor readDoctor(Person_login p) {
+	public Doctor readDoctor(Doctor p) {
 		DBObject query = BasicDBObjectBuilder.start()
 				.append("_id", new ObjectId(p.getId())).get();
 		DBObject data = this.col.findOne(query);
 		return DoctorConverter.toDoctor(data);
 	}
+	
+	
+	
 	public Boolean hasDoctor(String email) {
 		DBObject query = BasicDBObjectBuilder.start()
 				.append("email", email).get();
@@ -72,14 +75,25 @@ public class MongoDBDoctorDAO {
 			return true;
 		
 	}
-	public Doctor getDoctor(String email) {
-		
+	public Doctor getDoctor(String email) {	
 		DBObject query = BasicDBObjectBuilder.start()
 				.append("email", email).get();
 		DBObject data = this.col.findOne(query);
 		if (data==null){
-			System.out.println("ret null");
+			System.out.println("ret null");		
+			return null;}
+		else{			
+		return DoctorConverter.toDoctor(data);
+		}
 		
+	}
+	
+	public Doctor getDoctorWithId(String id) {	
+		  DBObject query = BasicDBObjectBuilder.start()
+	                .append("_id", id).get();
+		DBObject data = this.col.findOne(query);
+		if (data==null){
+			System.out.println("ret null");		
 			return null;}
 		else{			
 		return DoctorConverter.toDoctor(data);

@@ -1,7 +1,6 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.journaldev.mongodb.dao.MongoDBPatientDAO;
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
-import com.journaldev.mongodb.model.Person_login;
+import com.journaldev.mongodb.model.Doctor;
 import com.mongodb.MongoClient;
 
-@WebServlet("/addPerson")
+@WebServlet("/addDoctor")
 public class AddDoctorServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7060758261496829905L;
@@ -49,7 +47,7 @@ public class AddDoctorServlet extends HttpServlet {
 		
 		
 		else {
-			Person_login p = new Person_login();
+			Doctor p = new Doctor();
 			p.setName(firstName);
 			p.setLastName(lastName);
 			p.setPassword(password);
@@ -61,11 +59,11 @@ public class AddDoctorServlet extends HttpServlet {
 			p.setPhone(phone);
 			
 			doctorDAO.createDoctor(p);
-			System.out.println("Person Added Successfully with id="+p.getId());
-			request.setAttribute("success", "Person Added Successfully");
-			request.setAttribute("person", p);
+			System.out.println("Doctor Added Successfully with id="+p.getId());
+			request.setAttribute("success", "Doctor Added Successfully");
+			request.setAttribute("doctor", p);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/Profile.jsp");
+					"/ProfileDoctor.jsp");
 			rd.forward(request, response);
 		}
 	}

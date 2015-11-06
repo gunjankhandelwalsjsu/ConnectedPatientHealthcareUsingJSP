@@ -1,8 +1,6 @@
 package com.journaldev.mongodb.model;
 
-/**
- * Created by Aishwarya on 10/29/2015.
- */
+
 public class Patient {
 	
 	
@@ -18,8 +16,15 @@ public class Patient {
     String allergy;
     String email;
     String disease;
+	Doctor doctor;
 
-	
+	public Doctor getDoctor() {
+			return doctor;
+		}
+
+    public void setDoctor(Doctor d) {
+			this.doctor = d;
+		}
 	public String getId() {
 		return id;
 	}

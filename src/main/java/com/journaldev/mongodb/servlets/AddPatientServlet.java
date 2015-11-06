@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.journaldev.mongodb.dao.MongoDBPatientDAO;
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
+import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.MongoClient;
@@ -61,11 +63,20 @@ public class AddPatientServlet extends HttpServlet {
 			p.setPhone(phone);
 			
 			patientDAO.createPatient(p);
-			System.out.println("Person Added Successfully with id="+p.getId());
+			System.out.println("Patient Added Successfully with id="+p.getId());
 			request.setAttribute("success", "Person Added Successfully");
-			request.setAttribute("person", p);
+			request.setAttribute("Patient", p);
+			HttpSession session = request.getSession();
+			MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
+
+			 List<Doctor> doctors = doctorDAO.readAllDoctor();
+		     request.setAttribute("doctors", doctors);
+		     session.setAttribute("doctors", doctors);
+
+			session.setAttribute("Patient", p);
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-					"/patientRegistration.jsp");
+					"/Profile.jsp");
 			rd.forward(request, response);
 		}
 	}

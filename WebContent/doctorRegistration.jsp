@@ -40,7 +40,7 @@ ul li{height:40px; margin:15px 0; list-style:none}
 </head>
 <body>
 
-	<%-- Person Add/Edit logic --%>
+	<%-- doctor Add/Edit logic --%>
 	<c:if test="${requestScope.error ne null}">
 		<strong style="color: red;"><c:out
 				value="${requestScope.error}"></c:out></strong>
@@ -49,16 +49,15 @@ ul li{height:40px; margin:15px 0; list-style:none}
 		<strong style="color: green;"><c:out
 				value="${requestScope.success}"></c:out></strong>
 	</c:if>
-	<c:url value="/addPerson" var="addURL"></c:url>
-	<c:url value="/editPerson" var="editURL"></c:url>
+	<c:url value="/addDoctor" var="addDoctorURL"></c:url>
 
 	
 
 	<%-- Add Request --%>
 <div class="header"><h2>Doctor SignUp</h2></div>
 <div class="login">
-    <c:if test="${requestScope.person eq null}">
-        <form action='<c:out value="${addURL}"></c:out>' method="post">
+    <c:if test="${requestScope.doctor eq null}">
+        <form action='<c:out value="${addDoctorURL}"></c:out>' method="post">
             <ul>
         
               <li>

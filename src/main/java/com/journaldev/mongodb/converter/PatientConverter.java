@@ -2,6 +2,7 @@ package com.journaldev.mongodb.converter;
 
 import org.bson.types.ObjectId;
 
+import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.BasicDBObjectBuilder;
@@ -41,6 +42,7 @@ public class PatientConverter {
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
+	
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
 		return p;

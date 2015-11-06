@@ -60,7 +60,7 @@ import com.mongodb.MongoClient;
 				 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 			     List<Doctor> doctors = doctorDAO.readAllDoctor();
 			     request.setAttribute("doctors", doctors);
-			        session.setAttribute("doctors", doctors);
+			     session.setAttribute("doctors", doctors);
 
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
 						"/Profile.jsp");

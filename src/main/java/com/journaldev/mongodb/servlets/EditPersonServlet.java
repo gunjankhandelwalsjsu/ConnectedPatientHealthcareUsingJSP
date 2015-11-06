@@ -15,10 +15,11 @@ import com.journaldev.mongodb.dao.MongoDBPatientDAO;
 import com.journaldev.mongodb.dao.MongoDBPersonDAO;
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
 import com.journaldev.mongodb.model.Doctor;
+import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.MongoClient;
 
-@WebServlet("/editPerson")
+@WebServlet("/editPatient")
 public class EditPersonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -6554920927964049383L;
@@ -29,17 +30,17 @@ public class EditPersonServlet extends HttpServlet {
 		if (id == null || "".equals(id)) {
 			throw new ServletException("id missing for edit operation");
 		}
-		System.out.println("Person edit requested with id=" + id);
+		System.out.println("Patient edit requested with id=" + id);
 		MongoClient mongo = (MongoClient) request.getServletContext()
 				.getAttribute("MONGO_CLIENT");
-		MongoDBPersonDAO personDAO = new MongoDBPersonDAO(mongo);
-		Person_login p = new Person_login();
+		MongoDBPatientDAO personDAO = new MongoDBPatientDAO(mongo);
+		Patient p = new Patient();
 		p.setId(id);
-		p = personDAO.readPerson(p);
-		request.setAttribute("person", p);
+		p = personDAO.readPatient(p);
+		request.setAttribute("patient", p);
 
 		 HttpSession session = request.getSession();
-		session.setAttribute("person", p);
+		session.setAttribute("patient", p);
 
        
         MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
@@ -80,8 +81,8 @@ public class EditPersonServlet extends HttpServlet {
 		} else {
 			MongoClient mongo = (MongoClient) request.getServletContext()
 					.getAttribute("MONGO_CLIENT");
-			MongoDBPersonDAO personDAO = new MongoDBPersonDAO(mongo);
-			Person_login p = new Person_login();
+			MongoDBPatientDAO patientDAO = new MongoDBPatientDAO(mongo);
+			Patient p = new Patient();
 			p.setId(id);
 			p.setName(firstName);
 			p.setLastName(lastName);
@@ -93,7 +94,7 @@ public class EditPersonServlet extends HttpServlet {
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
 			
-			personDAO.updatePerson(p);
+			patientDAO.updatePatient(p);
 			 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 		        List<Doctor> doctors = doctorDAO.readAllDoctor();
 				 HttpSession session = request.getSession();
@@ -102,7 +103,7 @@ public class EditPersonServlet extends HttpServlet {
 
 			System.out.println("Person edited successfully with id=" + id);
 			request.setAttribute("success", "Person edited successfully");
-			request.setAttribute("person", p);
+			request.setAttribute("Patient", p);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/Profile.jsp");
 			rd.forward(request, response);
