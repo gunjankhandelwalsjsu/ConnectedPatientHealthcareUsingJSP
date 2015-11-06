@@ -23,7 +23,11 @@ public class PatientConverter {
 				.append("city", p.getCity())
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
-				.append("email", p.getEmail());
+				.append("email", p.getEmail())
+		        .append("d_name",p.getdName())
+		        .append("d_mail_id",p.getdMailId())
+		        .append("d_id",p.getdId());
+
 		if (p.getId() != null)
 			builder = builder.append("_id", new ObjectId(p.getId()));
 		return builder.get();
@@ -42,7 +46,9 @@ public class PatientConverter {
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
-	
+		p.setdName((String) doc.get("d_name"));
+		p.setdId((String)doc.get("d_id"));
+		p.setdMailId((String)doc.get("d_mail_id"));
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
 		return p;

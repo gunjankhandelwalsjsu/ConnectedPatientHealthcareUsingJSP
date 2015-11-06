@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 
 import com.journaldev.mongodb.converter.DoctorConverter;
 import com.journaldev.mongodb.model.Doctor;
+import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBCollection;
@@ -93,12 +94,29 @@ public class MongoDBDoctorDAO {
 	                .append("_id", id).get();
 		DBObject data = this.col.findOne(query);
 		if (data==null){
-			System.out.println("ret null");		
+			System.out.println("u are pretty null");		
 			return null;}
 		else{			
 		return DoctorConverter.toDoctor(data);
 		}
 		
 	}
+
+	public List<String> readAllPatient(Doctor d) {
+		// TODO Auto-generated method stub
+		List<String> Patientlist = new ArrayList<String>();	
+
+		Doctor doc = 	readDoctor(d);
+		System.out.println("printindao"+doc.getName());
+		List<String> emailList=new ArrayList<String>();
+		emailList=doc.getPatientEmail();
+		for(String e:emailList)
+			{
+			System.out.println("Printing emails"+e);
+			Patientlist.add(e);
+
+			}
+		
+		return Patientlist;	}
 
 }

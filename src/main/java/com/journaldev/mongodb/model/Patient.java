@@ -16,15 +16,43 @@ public class Patient {
     String allergy;
     String email;
     String disease;
+    String dName;
+	String dMailId;
+	String dId;
 	Doctor doctor;
 
 	public Doctor getDoctor() {
 			return doctor;
 		}
 
-    public void setDoctor(Doctor d) {
+	public String getdName() {
+		return dName;
+	}
+
+	public void setdName(String dName) {
+		this.dName = dName;
+	}
+
+	public String getdMailId() {
+		return dMailId;
+	}
+
+	public void setdMailId(String dMailId) {
+		this.dMailId = dMailId;
+	}
+
+	public String getdId() {
+		return dId;
+	}
+
+	public void setdId(String dId) {
+		this.dId = dId;
+	}
+
+	public void setDoctor(Doctor d) {
 			this.doctor = d;
 		}
+
 	public String getId() {
 		return id;
 	}

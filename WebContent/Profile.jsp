@@ -114,6 +114,9 @@
 <center><h3>	Street Address: <input type="text" value="${Patient.streetAddress}" name="streetAddress"><br></h3></center>
 <center><h3>	City: <input type="text" value="${Patient.city}"   name="city"><br></h3></center>
 <center><h3>	Zip code: <input type="text" value="${Patient.zipCode}"   name="zipCode"><br></h3></center>
+<center><h3>	Doctor-Name: <input type="text" value="${Patient.dName}"   name="doctorName"><br></h3></center>
+<center><h3>	Doctor-Mail-id: <input type="text" value="${Patient.dMailId}"   name="doctorMailId"><br></h3></center>
+<center><h3>	Doctor-id: <input type="text" value="${Patient.dId}"   name="doctorId"><br></h3></center>
 <center><h3>	Doctor: <input type="text" value="${Patient.doctor.firstName}"   name="doctorName"><br></h3></center>
 <strong>Doctor</strong> ${sessionScope.Patient.doctor.firstName}
 <br><br>		

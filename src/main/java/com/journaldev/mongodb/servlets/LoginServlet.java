@@ -46,16 +46,18 @@ import com.mongodb.MongoClient;
 			   if(doctor==null)
 				{
 					RequestDispatcher rd = getServletContext().getRequestDispatcher(
-							"/login.jsp");
+							"/loginDoctor.jsp");
 					request.setAttribute("success", "Please check your credentials!!!");
 					rd.forward(request, response);
 				}
 				else{
-				System.out.println("Person logged in Successfully with address="+doctor.getStreetAddress());
-				request.setAttribute("success", "Person loggedIn Successfully");
-				request.setAttribute("doctor", doctor);
+				System.out.println("Person logged in Successfully with address="+doctor.getPatientEmail());
+				request.setAttribute("success", "Doctor"+doctor.getFirstName()+"loggedIn Successfully");
 				HttpSession session = request.getSession();
-				session.setAttribute("person", doctor);
+
+				session.setAttribute("doctor", doctor);
+				session.setAttribute("id", doctor.getId());
+				request.setAttribute("id", doctor.getId());
 			/*     List<Doctor> doctors = doctorDAO.readAllDoctor();
 			     request.setAttribute("doctors", doctors);
 			     session.setAttribute("doctors", doctors);

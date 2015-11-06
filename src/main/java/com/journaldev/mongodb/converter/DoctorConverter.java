@@ -1,5 +1,7 @@
 package com.journaldev.mongodb.converter;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import com.journaldev.mongodb.model.Doctor;
@@ -22,7 +24,9 @@ public class DoctorConverter {
 				.append("city", p.getCity())
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
-				.append("email", p.getEmail());
+				.append("email", p.getEmail())
+                .append("patientEmail",p.getPatientEmail());
+
 		if (p.getId() != null)
 			builder = builder.append("_id", new ObjectId(p.getId()));
 		return builder.get();
@@ -41,6 +45,8 @@ public class DoctorConverter {
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
+		p.setPatientEmail((List<String>) doc.get("patientEmail"));
+
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
 		return p;

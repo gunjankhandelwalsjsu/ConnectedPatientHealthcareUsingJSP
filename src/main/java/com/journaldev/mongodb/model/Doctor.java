@@ -1,5 +1,7 @@
 package com.journaldev.mongodb.model;
 
+import java.util.List;
+
 /**
  * Created by Aishwarya on 10/29/2015.
  */
@@ -15,6 +17,19 @@ public class Doctor {
     String zipCode;
     String phone;
     String email;
+ 
+   
+	List<String> patientEmail;
+	
+	 public List<String> getPatientEmail() {
+			return patientEmail;
+		}
+
+		public void setPatientEmail(List<String> patientEmail) {
+			this.patientEmail = patientEmail;
+		}
+
+	
     public String getSpecialization() {
 		return specialization;
 	}

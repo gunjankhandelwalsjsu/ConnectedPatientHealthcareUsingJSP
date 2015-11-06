@@ -62,8 +62,9 @@ public class MongoDBPatientDAO {
 	}
 	
 	public Boolean hasPatient(String email) {
-		DBObject query = BasicDBObjectBuilder.start()
-				.append("email", email).get();
+		
+		BasicDBObject query = new BasicDBObject();
+		query.put("email", email);
 		DBObject data = this.col.findOne(query);
 		if(data!=null)
 			return false;
@@ -100,6 +101,11 @@ public Patient getPatient(String email) {
 	        WriteResult result = this.col.update(query, update);
 	        
 		//this.col.update(query, PatientConverter.toDBObject(patient));		
+	}
+	public void updatePatientWithDoctor(Patient p) {
+		DBObject query = BasicDBObjectBuilder.start()
+				.append("_id", new ObjectId(p.getId())).get();
+		this.col.update(query, PatientConverter.toDBObject(p));
 	}
 
 }
