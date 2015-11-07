@@ -54,10 +54,10 @@ ul li{height:40px; margin:15px 0; list-style:none}
 	<c:url value="/editPerson" var="editURL"></c:url>
 	<%-- Add Request --%>
 <div class="header"><h2>Patient SignUp</h2></div>
-<div class="login">
+     <div class="login">
     <c:if test="${requestScope.patient eq null}">
         <form action='<c:out value="${addURL}"></c:out>' method="post">
- <ul>
+           <ul>
         
               <li>
                 <span class="un"><i class="fa fa-user"></i></span><input type="text" name="firstName" required class="text" placeholder="First Name"/></li>
