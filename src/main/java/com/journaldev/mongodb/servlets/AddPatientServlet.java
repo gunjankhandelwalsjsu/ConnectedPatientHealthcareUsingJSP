@@ -1,6 +1,7 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,9 +33,8 @@ public class AddPatientServlet extends HttpServlet {
 		String state = request.getParameter("state");
 		String city = request.getParameter("city");
 		String zipcode = request.getParameter("zipcode");
-		String phone = request.getParameter("phone");
-		
-		String allergy[] = request.getParameterValues("Allergy"); 
+		String phone = request.getParameter("phone");	
+		String[] allergy= request.getParameterValues("Allergy"); 
 		
 		
 		
@@ -67,7 +67,8 @@ public class AddPatientServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
-			p.setAllergy(allergy);
+			if (allergy != null && allergy.length != 0) {
+			p.setAllergy(allergy);}
 			
 			patientDAO.createPatient(p);
 			System.out.println("Patient Added Successfully with id="+p.getId());

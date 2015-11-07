@@ -1,5 +1,7 @@
 package com.journaldev.mongodb.converter;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import com.journaldev.mongodb.model.Doctor;
@@ -25,10 +27,10 @@ public class PatientConverter {
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
 				.append("email", p.getEmail())
-				.append("allergy", p.getAllergy())
 		        .append("d_name",p.getdName())
 		        .append("d_mail_id",p.getdMailId())
-		        .append("d_id",p.getdId());
+		        .append("d_id",p.getdId())
+		        .append("allergy", p.getAllergy());
 
 		if (p.getId() != null)
 			builder = builder.append("_id", new ObjectId(p.getId()));
@@ -50,7 +52,8 @@ public class PatientConverter {
 		p.setCity((String) doc.get("city"));
 		p.setdName((String) doc.get("d_name"));
 		p.setdId((String)doc.get("d_id"));
-		BasicDBList allergy = (BasicDBList) doc.get("allergy");
+	//	BasicDBList allergy = (BasicDBList) doc.get("allergy");
+		p.setAllergy((String[]) doc.get("allergy"));
 
 		//p.setAllergy((String[]) allergy.toArray(new String[allergy.size()]));
 		p.setdMailId((String)doc.get("d_mail_id"));

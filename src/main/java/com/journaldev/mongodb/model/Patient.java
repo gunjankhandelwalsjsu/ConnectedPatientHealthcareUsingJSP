@@ -14,7 +14,6 @@ public class Patient {
     String state;
     String zipCode;
     String phone;
-  //  String allergy;
     String email;
     String disease;
     String dName;
@@ -28,15 +27,12 @@ public class Patient {
 public void setDoctor(Doctor doctor) {
 	this.doctor = doctor;
 }
-	public void setAllergy(String[] allergy2) {
-		this.allergy = allergy2;
+	public void setAllergy(String[] allergy) {
+		this.allergy = allergy;
 	}
 	public String[] getAllergy() {
       return allergy;
 		}
-
-
-	
 
 	public String getdName() {
 		return dName;
