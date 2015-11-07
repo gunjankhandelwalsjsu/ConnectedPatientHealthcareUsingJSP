@@ -5,6 +5,7 @@ import org.bson.types.ObjectId;
 import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 
@@ -24,6 +25,7 @@ public class PatientConverter {
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
 				.append("email", p.getEmail())
+				.append("allergy", p.getAllergy())
 		        .append("d_name",p.getdName())
 		        .append("d_mail_id",p.getdMailId())
 		        .append("d_id",p.getdId());
@@ -48,6 +50,9 @@ public class PatientConverter {
 		p.setCity((String) doc.get("city"));
 		p.setdName((String) doc.get("d_name"));
 		p.setdId((String)doc.get("d_id"));
+		BasicDBList allergy = (BasicDBList) doc.get("allergy");
+
+		//p.setAllergy((String[]) allergy.toArray(new String[allergy.size()]));
 		p.setdMailId((String)doc.get("d_mail_id"));
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());

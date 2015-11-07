@@ -1,5 +1,6 @@
 package com.journaldev.mongodb.model;
 
+import java.util.List;
 
 public class Patient {
 	
@@ -13,17 +14,29 @@ public class Patient {
     String state;
     String zipCode;
     String phone;
-    String allergy;
+  //  String allergy;
     String email;
     String disease;
     String dName;
 	String dMailId;
 	String dId;
-	Doctor doctor;
-
+	String[] allergy;
+    Doctor doctor;
 	public Doctor getDoctor() {
-			return doctor;
+	return doctor;
+}
+public void setDoctor(Doctor doctor) {
+	this.doctor = doctor;
+}
+	public void setAllergy(String[] allergy2) {
+		this.allergy = allergy2;
+	}
+	public String[] getAllergy() {
+      return allergy;
 		}
+
+
+	
 
 	public String getdName() {
 		return dName;
@@ -49,9 +62,7 @@ public class Patient {
 		this.dId = dId;
 	}
 
-	public void setDoctor(Doctor d) {
-			this.doctor = d;
-		}
+	
 
 	public String getId() {
 		return id;
@@ -127,13 +138,7 @@ public class Patient {
 
 	
 
-    public String getAllergy() {
-		return allergy;
-	}
-
-	public void setAllergy(String allergy) {
-		this.allergy = allergy;
-	}
+  
 
 	
     public String getEmail() {

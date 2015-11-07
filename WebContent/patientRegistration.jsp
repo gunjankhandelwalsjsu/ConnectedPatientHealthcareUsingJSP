@@ -86,26 +86,26 @@ ul li{height:40px; margin:15px 0; list-style:none}
                 <span class="un"><i class="fa fa-user"></i></span><input type="text" name="Zipcode" required class="text" placeholder="Zip Code"/></li>
 
 <label>FoodAllergies:</label><br/>
-<input type="checkbox" name="Allergy" value="Allergy"  checked /><span>Allergy</span> <br/> 
-                 <input type="checkbox" name="Soybean" value="soybean"   /><span>soybean</span> <br/> 
-   				 <input type="checkbox" name="Milk" value="milk"   /><span>milk</span> <br/> 
-   				<input type="checkbox" name="Gluten" value="gluten"   /><span>gluten</span> <br/> 
-   				 <input type="checkbox" name="Egg" value="egg"   /><span>egg</span> <br/> 
-   				 	<input type="checkbox" name="Mustard" value="mustard"   /><span>mustard</span> <br/> 
-   				 <input type="checkbox" name="Peants" value="peanuts"   /><span>peanuts</span> <br/> 
-   				<input type="checkbox" name="nuts" value="nuts"   /><span>nuts</span> <br/> 
-   				 <input type="checkbox" name="fish" value="fish"   /><span>fish</span> <br/> 		 
-   				 <input type="checkbox" name="coconut" value="coconut"   /><span>coconut</span> <br/> 
-   				 <input type="checkbox" name="seasme seeds" value="seasme seeds"   /><span>seasmeSeeds</span> <br/> 
-   				<input type="checkbox" name="corn" value="corn"   /><span>corn</span> <br/> 
-   				 <input type="checkbox" name="Flour" value="Flour"   /><span>flour</span> <br/> 
-   				 	<input type="checkbox" name="Whey-powder" value="Whey-powder"   /><span>wheyPowder</span> <br/> 
-   				 <input type="checkbox" name="Cornstarch" value="Cornstarch"   /><span>cornstarch</span> <br/> 
-   				<input type="checkbox" name="Celery" value="Celery"   /><span>celery</span> <br/> 
-   				 <input type="checkbox" name="Candlenut" value="Candlenut"   /><span>candlenut</span> <br/> 
+
+                 <input type="checkbox" name="Allergy" value="soybean"   /><span>soybean</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="milk"   /><span>milk</span> <br/> 
+   				<input type="checkbox" name="Allergy" value="gluten"   /><span>gluten</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="egg"   /><span>egg</span> <br/> 
+   				 	<input type="checkbox" name="Allergy" value="mustard"   /><span>mustard</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="peanuts"   /><span>peanuts</span> <br/> 
+   				<input type="checkbox" name="Allergy" value="nuts"   /><span>nuts</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="fish"   /><span>fish</span> <br/> 		 
+   				 <input type="checkbox" name="Allergy" value="coconut"   /><span>coconut</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="seasme seeds"   /><span>seasmeSeeds</span> <br/> 
+   				<input type="checkbox" name="Allergy" value="corn"   /><span>corn</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="Flour"   /><span>flour</span> <br/> 
+   				 	<input type="checkbox" name="Allergy" value="Whey-powder"   /><span>wheyPowder</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="Cornstarch"   /><span>cornstarch</span> <br/> 
+   				<input type="checkbox" name="Allergy" value="Celery"   /><span>celery</span> <br/> 
+   				 <input type="checkbox" name="Allergy" value="Candlenut"   /><span>candlenut</span> <br/> 
 <label>Disease and history:</label><br/>		 
-<input type="checkbox" name="diabetics" value="diabetics" /><span>Diabetics</span> <br/>
-<input type="checkbox" name="bloodpressure" value="bloodpressure" /><span>Blood Pressure</span>                     
+<input type="checkbox" name="Disease" value="diabetics" /><span>Diabetics</span> <br/>
+<input type="checkbox" name="Disease" value="bloodpressure" /><span>Blood Pressure</span>                     
                             
 <li>
 <input type="submit" value="Sign up" class="btn">

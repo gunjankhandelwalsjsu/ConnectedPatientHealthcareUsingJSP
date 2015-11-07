@@ -1,6 +1,8 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
 import com.journaldev.mongodb.model.Doctor;
@@ -58,10 +61,18 @@ public class AddDoctorServlet extends HttpServlet {
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
 			
+			List<String> emailList=new ArrayList<String>();
+			emailList.add("no Patient yet");
+			p.setPatientEmail(emailList);
+			
 			doctorDAO.createDoctor(p);
 			System.out.println("Doctor Added Successfully with id="+p.getId());
 			request.setAttribute("success", "Doctor Added Successfully");
 			request.setAttribute("doctor", p);
+			HttpSession session = request.getSession();
+
+			session.setAttribute("doctor", p);
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/ProfileDoctor.jsp");
 			rd.forward(request, response);

@@ -24,8 +24,9 @@ public class DoctorConverter {
 				.append("city", p.getCity())
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
-				.append("email", p.getEmail())
-                .append("patientEmail",p.getPatientEmail());
+				.append("email", p.getEmail());
+		if(!p.getPatientEmail().equals(null))
+             builder.append("patientEmail",p.getPatientEmail());
 
 		if (p.getId() != null)
 			builder = builder.append("_id", new ObjectId(p.getId()));

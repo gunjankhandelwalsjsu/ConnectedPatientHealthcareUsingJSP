@@ -88,9 +88,8 @@ ul li{height:40px; margin:15px 0; list-style:none}
 
                 <label>Speciality:</label><br/>
 
-   				<input type="checkbox" name="Allergy" value="Allergy"  checked /><span>Allergy</span> <br/> 			
-                <input type="checkbox" name="diabetics" value="diabetics" /><span>Diabetics</span> <br/>
-                <input type="checkbox" name="bloodpressure" value="bloodpressure" /><span>Blood Pressure</span>                
+                <input type="checkbox" name="Specialization" value="diabetics" /><span>Diabetics</span> <br/>
+                <input type="checkbox" name="Specialization" value="bloodpressure" /><span>Blood Pressure</span>                
                  
               <li>
                   <input type="submit" value="Sign Up" class="btn"></li>

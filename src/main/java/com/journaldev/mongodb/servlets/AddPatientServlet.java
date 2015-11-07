@@ -33,6 +33,12 @@ public class AddPatientServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
+		
+		String allergy[] = request.getParameterValues("Allergy"); 
+		
+		
+		
+		
 		if ((firstName == null || firstName.equals(""))) {
 			request.setAttribute("error", "Mandatory Parameters Missing");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
@@ -61,6 +67,7 @@ public class AddPatientServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
+			p.setAllergy(allergy);
 			
 			patientDAO.createPatient(p);
 			System.out.println("Patient Added Successfully with id="+p.getId());
