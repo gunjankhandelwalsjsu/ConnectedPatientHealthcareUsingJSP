@@ -14,7 +14,8 @@ import org.apache.http.message.BasicNameValuePair;
  
 public class SmsSender {
  
-	
+	public static final String ACCOUNT_SID = "AC54433aaca336b6c65628aae6fb32b439"; 
+	 public static final String AUTH_TOKEN = "082f81b4fa221d46fcb19474eeb98ddb"; 
 	 
 	 public static void sendSMS(List<NameValuePair> parameter) throws TwilioRestException { 
 		TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN); 
