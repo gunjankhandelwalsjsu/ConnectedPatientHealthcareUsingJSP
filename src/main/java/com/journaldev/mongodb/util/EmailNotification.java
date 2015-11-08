@@ -61,8 +61,8 @@ public class EmailNotification {
     public void sendEmail() throws AddressException, MessagingException {
 
         String emailHost = "smtp.gmail.com";
-        String fromUser = "305gunjan";//just the id alone without @gmail.com
-        String fromUserEmailPassword = "G*2unjan";
+        String fromUser = "3";//just the id alone without @gmail.com
+        String fromUserEmailPassword = "";
         
         Transport transport = mailSession.getTransport("smtps");
 
