@@ -1,3 +1,5 @@
+
+
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
@@ -38,6 +40,7 @@ public class EditPatientServlet extends HttpServlet {
 		MongoDBPatientDAO personDAO = new MongoDBPatientDAO(mongo);
 		Patient p = new Patient();
 		p.setId(id);
+		
 		p = personDAO.readPatient(p);
 		request.setAttribute("patient", p);
 
@@ -71,10 +74,24 @@ public class EditPatientServlet extends HttpServlet {
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
 		String[] al= request.getParameterValues("Allergy"); 
+		String[] dis= request.getParameterValues("Disease"); 
+
 		List<String> allergy=new ArrayList<String>();
+		List<String> disease=new ArrayList<String>();
+
+		if(al!=null&&al.length!=0){
 		for(int i=0;i<al.length;i++){
 			allergy.add(al[i]);
 		}
+		}
+		else allergy.add("No allergies");
+		
+		if(dis!=null&&dis.length!=0){
+			for(int i=0;i<dis.length;i++){
+				disease.add(dis[i]);
+			}
+			}
+			else disease.add("No existing disease");
 		
 		
 		if ((firstName == null || firstName.equals(""))
@@ -102,7 +119,9 @@ public class EditPatientServlet extends HttpServlet {
 			p.setPhone(phone);
 			if (allergy != null && allergy.size() != 0) {
 				p.setAllergy(allergy);}
-			
+			if (disease != null && disease.size() != 0) {
+				p.setDisease(disease);
+				}
 			patientDAO.updatePatient(p);
 			 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 		        List<Doctor> doctors = doctorDAO.readAllDoctor();
@@ -111,7 +130,7 @@ public class EditPatientServlet extends HttpServlet {
 		        request.setAttribute("doctors", doctors);
 
 			System.out.println("Person edited successfully with id=" + id);
-			request.setAttribute("success", "Patient"+p.getFirstName()+"edited successfully");
+			request.setAttribute("success", "Profile of Patient "+p.getFirstName()+"edited successfully");
 			request.setAttribute("Patient", p);
 			session.setAttribute("Patient", p);
 

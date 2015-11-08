@@ -23,7 +23,6 @@ import com.journaldev.mongodb.dao.MongoDBPersonDAO;
 import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
-import com.journaldev.mongodb.util.EmailNotification;
 import com.journaldev.mongodb.util.SmsSender;
 import com.mongodb.MongoClient;
 import com.twilio.sdk.TwilioRestException;
@@ -34,7 +33,7 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String id_patient =  ((ServletRequest) session).getParameter("id").toString();
+		String id_patient = ((ServletRequest) session).getParameter("id").toString();
 		System.out.println(id_patient);
 		String id_doctor = request.getParameter("id").toString();
 		if (id_doctor == null || "".equals(id_doctor)) {
@@ -85,8 +84,10 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 		patientDAO.updatePatientWithDoctor(p);
 		Patient pat = new Patient();
 		pat = patientDAO.readPatient(p);
-		/********************SMS Notification***********************************/
-	/*	String pName = pat.getFirstName();
+		/********************
+		 * SMS Notification
+		 ***********************************/
+		String pName = pat.getFirstName();
 		String dEmail = d.getEmail();
 		String dPhone = d.getPhone();
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -99,36 +100,26 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String[] toEmails = { dEmail };
-		String emailSubject = "patient wants to add you";
-		String emailBody = "This is an email sent by" + pName;
 
-		EmailNotification notification = new EmailNotification();
-		try {
-			notification.mail(toEmails, emailSubject, emailBody);
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		/********************************************************************/
 		System.out.println("Doctor Added Successfully with id=" + id_doctor);
-		
-		/*****************Setting Patient for doctor***************/
+
+		/***************** Setting Patient for doctor ***************/
 		List<String> PatientList = new ArrayList<String>();
-        for (String pEmail:d.getPatientEmail()){
-        	if(!pEmail.equals("no Patient yet")&&(!PatientList.contains(pEmail))){     			
-        	PatientList.add(pEmail);
-        	}
-        	System.out.println("inside addition of dctor"+p.getEmail());
-        }
-        PatientList.add(p.getEmail());
-        for(int i=0;i<PatientList.size();i++)
-        	System.out.println(PatientList.get(i));
-        d.setPatientEmail(PatientList);
+
+		for (String pEmail : d.getPatientEmail()) {
+			if (!pEmail.equals(null)&&!pEmail.equals("no Patient yet") && (!PatientList.contains(pEmail))) {
+				PatientList.add(pEmail);
+			}
+			System.out.println("inside addition of dctor" + p.getEmail());
+		}
+		PatientList.add(p.getEmail());
+		for (int i = 0; i < PatientList.size(); i++)
+			System.out.println(PatientList.get(i));
+		d.setPatientEmail(PatientList);
 		doctorDAO.updateDoctor(d);
 		/*********************************************************/
-		
-		
+
 		request.setAttribute("success", "Doctor Added Successfully");
 		request.setAttribute("Patient", pat);
 		session.setAttribute("Patient", pat);

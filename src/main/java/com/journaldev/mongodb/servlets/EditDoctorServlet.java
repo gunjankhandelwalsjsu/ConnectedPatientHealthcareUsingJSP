@@ -65,6 +65,16 @@ public class EditDoctorServlet extends HttpServlet {
 		String zipcode = request.getParameter("zipCode");
 		String phone = request.getParameter("phone");
 	//	String pEmail=request.getParameter("//)
+		String[] spec= request.getParameterValues("Specialization"); 
+
+		List<String> Specialization=new ArrayList<String>();
+
+		if(spec!=null&&spec.length!=0){
+		for(int i=0;i<spec.length;i++){
+			Specialization.add(spec[i]);
+		}
+		}
+		else Specialization.add("No Specialization");
 		
 
 		if ((firstName == null || firstName.equals(""))

@@ -51,11 +51,14 @@
 
 			</ul>
 
-			<ul class="navbar-brand navbar-right">
-				<li><a href="ProfileDoctor.jsp">My Account</a></li>
-				<li><a href="MainSignUp.jsp">Sign Out</a></li>
-
-			</ul>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="Profile.jsp"><span
+							class="glyphicon glyphicon-user"></span> My Account</a></li>
+					<li><a href="MainSignUp.jsp"><span
+							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+				</ul>
+			</div>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>

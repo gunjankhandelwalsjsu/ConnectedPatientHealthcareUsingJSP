@@ -60,11 +60,14 @@
 
 			</ul>
 
-			<ul class="navbar-brand navbar-right">
-				<li><a href="ProfileDoctor.jsp">My Account</a></li>
-				<li><a href="MainSignUp.jsp">Sign Out</a></li>
-
-			</ul>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="Profile.jsp"><span
+							class="glyphicon glyphicon-user"></span> My Account</a></li>
+					<li><a href="MainSignUp.jsp"><span
+							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+				</ul>
+			</div>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -109,39 +112,48 @@
 					<br /> <br /> <br />
 					<c:if test="${patient ne null}">
 						<center>
-							<h3>General Info of ${patient.firstName} requested</h3>
+							<h3>General Info of Patient ${patient.firstName} requested</h3>
 						</center>
 						<ul>
-							<li><b> Name:</b>${patient.firstName} ${patient.lastName}</li>
+							<li><b> Patient Name:</b>${patient.firstName} ${patient.lastName}</li>
 
 						</ul>
 						<center>
-						<h3>Contact Info</h3>
-					</center>         
-					<address>
-						<ul>
-							<li><b> Email:</b>${patient.email}</li>
-							<li><b> Phone:</b> ${patient.phone}</li>
-							<li><b> Address:</b>${patient.streetAddress}<br>${patient.city}<br>${patient.state}<br>${patient.zipCode}</li>
-						</ul>
-						<br /> <br /> 
-					</address>
-					<center>
-							<h3>Health Information</h3>
+							<h3>Contact Info of Patient</h3>
 						</center>
-						<p>Allergy
+						<address>
+							<ul>
+								<li><b> Email:</b>${patient.email}</li>
+								<li><b> Phone:</b> ${patient.phone}</li>
+								<li><b> Address:</b>${patient.streetAddress}<br>${patient.city}<br>${patient.state}<br>${patient.zipCode}</li>
+							</ul>
+							<br /> <br />
+						</address>
 						
-						<p>
-							<c:if test="${Patient.allergy ne null}">
-								<c:forEach items="${Patient.allergy}" var="allergy">
-									<ul>
-										<li>
-											<p>Allergy: ${allergy}</p>
-										</li>
-									</ul>
+							<center>
+								<h3>Health Information</h3>
+							</center>
+
+							<p>Allergy</p>
+							<c:if test="${patient.allergy ne null}">
+								<c:forEach items="${patient.allergy}" var="allergy">
+
+									<p>${allergy},</p>
+
 								</c:forEach>
 							</c:if>
-						
+							<br>
+							<p>Disease and history
+							<p>
+								<c:if test="${patient.disease ne null}">
+									<c:forEach items="${patient.disease}" var="disease">
+										
+												<p>${disease},</p>
+											
+									</c:forEach>
+								</c:if>
+								<br>
+								<br>
 					</c:if>
 
 				</div>

@@ -70,9 +70,10 @@
 				</ul>
 				<div class="col-md-3">
 					<ul class="nav navbar-nav navbar-right">
-        <li><a href="MainSignUp.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="MainLogin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  				
+						<li><a href="MainSignUp.jsp"><span
+								class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="MainLogin.jsp"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 				</div>
 			</div>

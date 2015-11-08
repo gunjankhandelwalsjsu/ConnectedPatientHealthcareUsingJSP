@@ -15,10 +15,12 @@ public class Patient {
     String zipCode;
     String phone;
     String email;
-    String disease;
+    List<String> disease;
     String dName;
 	String dMailId;
 	String dId;
+	List<String> allergy;
+
 	public void setAllergy(List<String> allergy) {
 		this.allergy = allergy;
 	}
@@ -27,7 +29,6 @@ public class Patient {
 		return allergy;
 	}
 
-	List<String> allergy;
     Doctor doctor;
 	public Doctor getDoctor() {
 	return doctor;
@@ -149,11 +150,11 @@ public void setDoctor(Doctor doctor) {
     }
 
   
-    public String getDisease() {
+    public List<String> getDisease() {
         return disease;
     }
 
-    public void setDisease(String disease) {
+    public void setDisease(List<String> disease) {
         this.disease = disease;
     }
 

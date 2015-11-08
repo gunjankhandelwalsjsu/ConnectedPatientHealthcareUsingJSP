@@ -17,7 +17,16 @@ public class Doctor {
     String zipCode;
     String phone;
     String email;
- 
+    public List<String> getSpecialization() {
+		return specialization;
+	}
+
+	public void setSpecialization(List<String> specialization) {
+		this.specialization = specialization;
+	}
+
+	List<String> specialization;
+
    
 	List<String> patientEmail;
 	
@@ -30,15 +39,7 @@ public class Doctor {
 		}
 
 	
-    public String getSpecialization() {
-		return specialization;
-	}
-
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
-	}
-
-	String specialization;
+  
 
 	
 	public String getId() {

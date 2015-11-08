@@ -32,6 +32,16 @@ public class AddDoctorServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
+		String[] spec= request.getParameterValues("Disease"); 
+		List<String> specialization=new ArrayList<String>();
+
+		if(spec!=null&&spec.length!=0){
+		for(int i=0;i<spec.length;i++){
+			specialization.add(spec[i]);
+		}
+		}
+		else specialization.add("No allergies");
+
 		if ((firstName == null || firstName.equals(""))) {
 			request.setAttribute("error", "Mandatory Parameters Missing");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
@@ -60,7 +70,9 @@ public class AddDoctorServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
-			
+			if (specialization != null && specialization.size() != 0) {
+				p.setSpecialization(specialization);
+				}
 			List<String> emailList=new ArrayList<String>();
 			emailList.add("no Patient yet");
 			p.setPatientEmail(emailList);

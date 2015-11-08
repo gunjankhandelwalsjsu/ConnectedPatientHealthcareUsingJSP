@@ -60,11 +60,14 @@
 
 			</ul>
 
-			<ul class="navbar-brand navbar-right">
-				<li><a href="Profile.jsp">My Account</a></li>
-				<li><a href="MainSignUp.jsp">Sign Out</a></li>
-
-			</ul>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="Profile.jsp"><span
+							class="glyphicon glyphicon-user"></span> My Account</a></li>
+					<li><a href="MainSignUp.jsp"><span
+							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+				</ul>
+			</div>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -124,9 +127,10 @@
 							York, NY</li>
 						<li><b> Residency:</b> Internal Medicine,San Fransisco,CA</li>
 					</ul>
+					
 					<center>
 						<h3>Contact Info</h3>
-					</center>         '[
+					</center>         
 					<address>
 						<ul>
 							<li><b> Email:</b>${doctor.email}</li>
@@ -136,6 +140,19 @@
 						<br /> <br /> <b>office hours:</b> <br /> Monday-Thursday :
 						8.30am to 5.pm Friday-8.30am to 3.30pm
 					</address>
+					<center>
+							<h3>Specializations</h3>
+						</center>
+
+						<c:if test="${doctor.specialization ne null}">
+							<c:forEach items="${doctor.specialization}" var="specialization">
+								<ul>
+									<li>
+										<p>${specialization}</p>
+									</li>
+								</ul>
+							</c:forEach>
+						</c:if>
 
 
 					<form

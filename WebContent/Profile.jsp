@@ -58,12 +58,15 @@
 				<li><a href="Profile.jsp">My profile</a></li>
 
 			</ul>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="Profile.jsp"><span
+							class="glyphicon glyphicon-user"></span> My Account</a></li>
+					<li><a href="MainSignUp.jsp"><span
+							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+				</ul>
+			</div>
 
-			<ul class="navbar-brand navbar-right">
-				<li><a href="Profile.jsp">My Account</a></li>
-				<li><a href="MainSignUp.jsp">Sign Out</a></li>
-
-			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -123,6 +126,8 @@
 							<li><b> Name:</b>${Patient.firstName} ${Patient.lastName}</li>
 
 						</ul>
+						<br />
+						<br />
 						<center>
 							<h3>Contact Info</h3>
 						</center>
@@ -141,26 +146,45 @@
 							<h3>Health Information</h3>
 						</center>
 						<p>Allergy
-						
 						<p>
 							<c:if test="${Patient.allergy ne null}">
 								<c:forEach items="${Patient.allergy}" var="allergy">
 									<ul>
 										<li>
-											<p>Allergy: ${allergy}</p>
+											<p>${allergy}</p>
+										</li>
+									</ul>
+								</c:forEach>
+							</c:if>
+							<br>
+						<p>Disease and history
+						<p>
+							<c:if test="${Patient.disease ne null}">
+								<c:forEach items="${Patient.disease}" var="disease">
+									<ul>
+										<li>
+											<p>${disease}</p>
 										</li>
 									</ul>
 								</c:forEach>
 							</c:if>
 						<center>
+							<br>
+							<br>
 							<h3>Doctor Information</h3>
 						</center>
-						<ul>
-							<li><b> Id:</b>${Patient.dId}</li>
-							<li><b> Name:</b>${Patient.dName}</li>
-							<li><b> Email:</b>${Patient.dMailId}</li>
+						<c:if test="${Patient.dId eq null}">
+							No Doctors Added to your profile. You need to select a doctor from our list of doctors.
+							</c:if>
 
-						</ul>
+						<c:if test="${Patient.dId ne null}">
+							<ul>
+								<li><b> Id:</b>${Patient.dId}</li>
+								<li><b> Name:</b>${Patient.dName}</li>
+								<li><b> Email:</b>${Patient.dMailId}</li>
+
+							</ul>
+						</c:if>
 					</c:if>
 				</div>
 			</div>
@@ -193,8 +217,8 @@
 
 
 		<a href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete
-			Profile</a> <a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit
-			Profile</a>
+		</a> <a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit
+		</a>
 
 	</div>
 

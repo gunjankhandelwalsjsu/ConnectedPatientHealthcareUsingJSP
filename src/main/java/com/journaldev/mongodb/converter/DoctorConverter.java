@@ -1,11 +1,13 @@
 package com.journaldev.mongodb.converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
 
 import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Person_login;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 
@@ -24,6 +26,7 @@ public class DoctorConverter {
 				.append("city", p.getCity())
 				.append("zipcode", p.getZipCode())
 				.append("phone", p.getPhone())
+				.append("Specialization", p.getSpecialization())
 				.append("email", p.getEmail());
 		if(!p.getPatientEmail().equals(null))
              builder.append("patientEmail",p.getPatientEmail());
@@ -47,7 +50,16 @@ public class DoctorConverter {
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
 		p.setPatientEmail((List<String>) doc.get("patientEmail"));
+		BasicDBList specialization = (BasicDBList) doc.get("Specialization");
+		List<String> spec = new ArrayList<String>();
+		if (specialization != null && specialization.size() != 0) {
 
+			for (int i = 0; i < specialization.size(); i++) {
+				spec.add(specialization.get(i).toString());
+			}
+		} else
+			spec.add("no disease");
+		p.setSpecialization(spec);
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
 		return p;

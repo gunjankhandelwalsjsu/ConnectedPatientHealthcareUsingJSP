@@ -51,11 +51,14 @@
 
 			</ul>
 
-			<ul class="navbar-brand navbar-right">
-				<li><a href="ProfileDoctor.jsp">My Account</a></li>
-				<li><a href="MainSignUp.jsp">Sign Out</a></li>
-
-			</ul>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="Profile.jsp"><span
+							class="glyphicon glyphicon-user"></span> My Account</a></li>
+					<li><a href="MainSignUp.jsp"><span
+							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+				</ul>
+			</div>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -113,49 +116,52 @@
 					<%-- Edit Request --%>
 					<c:if test="${Patient ne null}">
 						<form action='<c:out value="${editURL}"></c:out>' method="post">
-
-							<h3>
+							<br>
+							<p>
 								First Name: <input type="text" value="${Patient.firstName}"
 									name="firstName"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								Last Name: <input type="text" value="${Patient.lastName}"
 									name="lastName"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								Email: <input type="text" value="${Patient.email}" name="email"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								Phone: <input type="text" value="${Patient.phone}" name="phone"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								Street Address: <input type="text"
 									value="${Patient.streetAddress}" name="streetAddress"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								City: <input type="text" value="${Patient.city}" name="city"><br>
-							</h3>
+							</p>
 
-							<h3>
+							<p>
 								Zip code: <input type="text" value="${Patient.zipCode}"
 									name="zipCode"><br>
-							</h3>
+							</p>
 							<center>
+								<br>
 								<h3>Health Information</h3>
 							</center>
 							<p>
-							<h3>Allergy</h3>
+								<p>
+								<b>Food Allergies
+									</b>
 							</p>
-							<!-- Allergy checkBox content -->
-							
-							<label>FoodAllergies:</label><br />
+							<br> <label>Your existing Diseases are:</label>
+							<c:forEach items="${Patient.disease}" var="disease">
+								 ${disease}, 
+							</c:forEach>
 							<ul class="checkbox-grid">
-
 								<li><input type="checkbox" name="Allergy" value="soybean" /><span>soybean</span>
 									<br /></li>
 								<li><input type="checkbox" name="Allergy" value="milk" /><span>milk</span>
@@ -171,8 +177,7 @@
 								<li><input type="checkbox" name="Allergy" value="nuts" /><span>nuts</span>
 									<br /></li>
 								<li><input type="checkbox" name="Allergy" value="fish" />
-								<span>fish</span>
-								<br /></li>
+									<span>fish</span> <br /></li>
 								<li><input type="checkbox" name="Allergy" value="coconut" /><span>coconut</span>
 									<br /></li>
 								<li><input type="checkbox" name="Allergy"
@@ -180,7 +185,7 @@
 								<li><input type="checkbox" name="Allergy" value="corn" /><span>corn</span>
 									<br /></li>
 								<li><input type="checkbox" name="Allergy" value="Flour" /><span>flour</span>
-									<br/></li>
+									<br /></li>
 								<li><input type="checkbox" name="Allergy"
 									value="Whey-powder" /><span>wheyPowder</span> <br /></li>
 								<li><input type="checkbox" name="Allergy"
@@ -190,28 +195,45 @@
 								<li><input type="checkbox" name="Allergy" value="Candlenut" /><span>candlenut</span>
 									<br /></li>
 							</ul>
+							<br>
+							<br>
 							<!-- Allergy checkBox content -->
-							<c:forEach items="${Patient.allergy}" var="allergy">
-								<p>Allergy: ${allergy}</p>
+							<br>
+							<p>
+								<b>Diseases</b>
+							</p>
+							<br> <label>Your existing Diseases are:</label>
+							<c:forEach items="${Patient.disease}" var="disease">
+								 ${disease}, 
 							</c:forEach>
+							<br />
+							<ul class="checkbox-grid">
+								<li><input type="checkbox" name="Disease" value="Diabetics" /><span>Diabetics</span>
+									<br /></li>
+								<li><input type="checkbox" name="Disease"
+									value="Blood Pressure" /><span>Blood Pressure</span> <br /></li>
+							</ul>
+							<br>
+							<br>
+
+
+							<!-- End of Disease checkBox content -->
+							<br>
 							<center>
 								<h3>Doctor Information</h3>
 							</center>
-							<h3>
-								Name: <input type="text" value="${Patient.dName}"
-									readonly="readonly" name="doctorName"><br>
-							</h3>
+							<c:if test="${Patient.dId eq null}">
+							No Doctors Added to your profile. You need to select a doctor from our list of doctors.
+							</c:if>
 
-							<h3>
-								Email: <input type="text" value="${Patient.dMailId}"
-									readonly="readonly" name="doctorMailId"><br>
-							</h3>
+							<c:if test="${Patient.dId ne null}">
+								<ul>
+									<li><b> Id:</b>${Patient.dId}</li>
+									<li><b> Name:</b>${Patient.dName}</li>
+									<li><b> Email:</b>${Patient.dMailId}</li>
 
-							<h3>
-								Id: <input type="text" value="${Patient.dId}"
-									readonly="readonly" name="doctorId"><br>
-							</h3>
-
+								</ul>
+							</c:if>
 							<br> <br>
 							<h3>
 								<input type="submit" value="Save">
