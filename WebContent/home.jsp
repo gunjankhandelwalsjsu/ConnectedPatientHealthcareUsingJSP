@@ -1,28 +1,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-     <title>Connected Patient Health Analytics Using Wearables</title>
+<title>Connected Patient Health Analytics Using Wearables</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Add custom CSS here -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+<!-- Add custom CSS here -->
+<link href="css/style.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Bevan'
+	rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-<%-- Person Add/Edit logic --%>
+	<%-- Person Add/Edit logic --%>
 	<c:if test="${requestScope.error ne null}">
 		<strong style="color: red;"><c:out
 				value="${requestScope.error}"></c:out></strong>
@@ -32,71 +33,68 @@
 				value="${requestScope.success}"></c:out></strong>
 	</c:if>
 	<c:url value="/" var="home"></c:url>
-        
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<a class="navbar-brand" href="index.html">Straight Talk</a>-->
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="home.html">Home</a>
-                    </li>
-                    
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topic
-                      <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Food Allergy</a></li>
-                        <li><a href="#">Blood Pressure</a></li>
-                        <li><a href="#">Sugar</a></li> 
-                      </ul>
-                    </li>
-                    
-                    <li><a href="Doctors.jsp">Doctors</a></li>
-                    
-                    <li><a href="topic.html">Patient</a></li>
-                    
-                    <li><a href="aboutUs.jsp">About Us</a></li>
-                    
-                    <li><a href="contact.jsp">Contact Us</a></li>
-                    
-                    
-                    
-                    <li><a href="chart.jsp">Pie Chart</a></li>
-                </ul>
-                <ul class="navbar-brand navbar-right">
-                    <li><a href="login.jsp">Patient Login</a></li>
-                    <li><a href="loginDoctor.jsp">Doctor Login</a></li>     
-                    <li><a href="MainSignUp.jsp">SignUp</a></li>           
-                </ul>
-            </div>
-            
-           
-           
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
-    <div class="container">
-        
-        <div class="page-header" id="site-header">
-            <h1>Connected Patient Health Analytics Using Wearables</h1>
-        </div>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Navigation</span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<!--<a class="navbar-brand" href="index.html">Straight Talk</a>-->
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="home.jsp">Home</a></li>
 
-       <!-- <div class="row">-->
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Topic <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Food Allergy</a></li>
+							<li><a href="#">Blood Pressure</a></li>
+							<li><a href="#">Sugar</a></li>
+						</ul></li>
 
-            <div class="col-md-9">
-                <!-- Begin Slider -->
-                <!--<div class="row carousel-holder">
+					<li><a href="Doctors.jsp">Doctors</a></li>
+
+					<li><a href="topic.html">Patient</a></li>
+
+					<li><a href="aboutUs.jsp">About Us</a></li>
+
+					<li><a href="contact.jsp">Contact Us</a></li>
+
+
+					<li><a href="chart.jsp">Pie Chart</a></li>
+				</ul>
+				<div class="col-md-3">
+					<ul class="nav navbar-nav navbar-right">
+        <li><a href="MainSignUp.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="MainLogin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  				
+					</ul>
+				</div>
+			</div>
+
+
+
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<div class="container">
+
+		<div class="page-header" id="site-header">
+			<h1>Connected Patient Health Analytics Using Wearables</h1>
+		</div>
+
+		<!-- <div class="row">-->
+
+		<div class="col-md-9">
+			<!-- Begin Slider -->
+			<!--<div class="row carousel-holder">
 
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -130,10 +128,10 @@
                     </div>
 
                 </div>-->
-                <!-- end slider -->
-                
-                <!-- Main Content -->
-                <!--<div class="row" style="margin-top: 40px;">
+			<!-- end slider -->
+
+			<!-- Main Content -->
+			<!--<div class="row" style="margin-top: 40px;">
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail" style="padding: 12px;box-shadow: 1px 1px 5px #aaa;">
@@ -202,10 +200,10 @@
                     </div>
                 </div>
             </div>-->
-            
-            <!-- End main content -->
-            
-            <!--<div class="col-md-3">
+
+			<!-- End main content -->
+
+			<!--<div class="col-md-3">
                 <p class="lead">Side Bar Links</p>
                 <div class="list-group">
                     <a href="#" class="list-group-item active">
@@ -225,28 +223,27 @@
         </div>
 
     </div>-->
-    <!-- /.container -->
+			<!-- /.container -->
 
-    <div class="container">
+			<div class="container">
 
-        <hr>
+				<hr>
 
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="text-right">Copyright &copy; Company 2014 - Hardik Shah
-                    </p>
-                </div>
-            </div>
-        </footer>
+				<footer>
+					<div class="row">
+						<div class="col-lg-12">
+							<p class="text-right">Copyright &copy; Company 2014 - Hardik
+								Shah</p>
+						</div>
+					</div>
+				</footer>
 
-    </div>
-    <!-- /.container -->
+			</div>
+			<!-- /.container -->
 
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-
+			<!-- JavaScript -->
+			<script src="js/jquery-1.10.2.js"></script>
+			<script src="js/bootstrap.js"></script>
 </body>
 
 </html>

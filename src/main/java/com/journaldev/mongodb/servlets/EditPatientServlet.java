@@ -1,6 +1,7 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -69,8 +70,13 @@ public class EditPatientServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
-		String[] allergy=request.getParameterValues("Allergy");
-
+		String[] al= request.getParameterValues("Allergy"); 
+		List<String> allergy=new ArrayList<String>();
+		for(int i=0;i<al.length;i++){
+			allergy.add(al[i]);
+		}
+		
+		
 		if ((firstName == null || firstName.equals(""))
 				|| (email == null || email.equals(""))) {
 			request.setAttribute("error", "Name and email Can't be empty");
@@ -94,7 +100,7 @@ public class EditPatientServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
-			if (allergy != null && allergy.length != 0) {
+			if (allergy != null && allergy.size() != 0) {
 				p.setAllergy(allergy);}
 			
 			patientDAO.updatePatient(p);

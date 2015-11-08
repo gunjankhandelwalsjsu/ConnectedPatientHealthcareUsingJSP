@@ -33,9 +33,9 @@ public class ProfileServlet extends HttpServlet {
 		MongoClient mongo = (MongoClient) request.getServletContext()
 				.getAttribute("MONGO_CLIENT");
 		MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
-		Doctor p = new Doctor();
-		p.setId(id);
-		p = doctorDAO.readDoctor(p);
+		Doctor doc = new Doctor();
+		doc.setId(id);
+		Doctor p = doctorDAO.readDoctor(doc);
 		request.setAttribute("doctor", p);
 	     List<Doctor> doctors = doctorDAO.readAllDoctor();
 	     request.setAttribute("doctors", doctors);

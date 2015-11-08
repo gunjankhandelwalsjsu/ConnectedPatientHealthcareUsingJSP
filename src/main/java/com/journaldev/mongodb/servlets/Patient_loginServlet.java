@@ -13,10 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
 import com.journaldev.mongodb.dao.MongoDBPatientDAO;
-import com.journaldev.mongodb.dao.MongoDBPersonDAO;
 import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
-import com.journaldev.mongodb.model.Person_login;
 import com.mongodb.MongoClient;
 
 @WebServlet("/loginPatient")
@@ -41,10 +39,10 @@ public class Patient_loginServlet extends HttpServlet {
 		    
 			MongoClient mongo =(MongoClient) request.getServletContext()
 					.getAttribute("MONGO_CLIENT");
-			MongoDBPatientDAO personDAO = new MongoDBPatientDAO(mongo);
+			MongoDBPatientDAO patientDAO = new MongoDBPatientDAO(mongo);
 			System.out.println(email);
-			Patient person=personDAO.getPatient(email);
-		   if(person==null)
+			Patient patient=patientDAO.getPatient(email);
+		   if(patient==null)
 			{
 				RequestDispatcher rd = getServletContext().getRequestDispatcher(
 						"/login.jsp");
@@ -52,12 +50,12 @@ public class Patient_loginServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			else{
-			System.out.println("Patient logged in Successfully with address="+person.getStreetAddress());
-			request.setAttribute("success", "Patient"+person.getFirstName()+" loggedIn Successfully");
+			System.out.println("Patient logged in Successfully with address="+patient.getStreetAddress());
+			request.setAttribute("success", "Patient "+patient.getFirstName()+" loggedIn Successfully");
 			
-			request.setAttribute("Patient", person);
+			request.setAttribute("Patient", patient);
 			HttpSession session = request.getSession();
-			session.setAttribute("Patient", person);
+			session.setAttribute("Patient", patient);
 			 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 		     List<Doctor> doctors = doctorDAO.readAllDoctor();
 		     request.setAttribute("doctors", doctors);

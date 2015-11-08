@@ -34,7 +34,11 @@ public class AddPatientServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");	
-		String[] allergy= request.getParameterValues("Allergy"); 
+		String[] al= request.getParameterValues("Allergy"); 
+		List<String> allergy=new ArrayList<String>();
+		for(int i=0;i<al.length;i++){
+			allergy.add(al[i]);
+		}
 		
 		
 		
@@ -67,8 +71,9 @@ public class AddPatientServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
-			if (allergy != null && allergy.length != 0) {
-			p.setAllergy(allergy);}
+			if (allergy != null && allergy.size() != 0) {
+			p.setAllergy(allergy);
+			}
 			
 			patientDAO.createPatient(p);
 			System.out.println("Patient Added Successfully with id="+p.getId());

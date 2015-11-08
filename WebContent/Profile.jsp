@@ -84,9 +84,9 @@
 			<strong style="color: green;"><c:out
 					value="${requestScope.success}"></c:out></strong>
 		</c:if>
-		
+
 		<c:url value="/clickedProfile" var="clickedProfile">
-			<c:param name="id" value="${doctor.id}"></c:param>
+			<c:param name="id" value="${Patient.id}"></c:param>
 		</c:url>
 		<c:url value="/deletePerson" var="deleteURL">
 			<c:param name="id" value="${person.id}"></c:param>
@@ -140,8 +140,8 @@
 						<center>
 							<h3>Health Information</h3>
 						</center>
-
 						<p>Allergy
+						
 						<p>
 							<c:if test="${Patient.allergy ne null}">
 								<c:forEach items="${Patient.allergy}" var="allergy">
@@ -175,8 +175,15 @@
 					</a>
 					<c:if test="${not empty doctors}">
 						<c:forEach items="${doctors}" var="doctor">
-							<a href="${clickedProfile}" class="list-group-item"><c:out
-									value="${doctor.firstName}"></c:out></a>
+							<c:if test="${doctor eq null}">No Doctors in System</c:if>
+							<c:if test="${doctor ne null}">
+								<c:url value="/clickedProfile" var="clickedProfile">
+									<c:param name="id" value="${doctor.id}"></c:param>
+								</c:url>
+								<a href="${clickedProfile}" class="list-group-item"><c:out
+										value="${doctor.firstName}"></c:out></a>
+							</c:if>
+
 						</c:forEach>
 					</c:if>
 					<button class="btn btn-danger btn-block btn-lg">Add Doctor</button>
@@ -185,93 +192,10 @@
 		</div>
 
 
-		<%-- Edit Request --%>
-		<c:if test="${Patient ne null}">
-			<form action='<c:out value="${editURL}"></c:out>' method="post">
-				ID: <input type="text" value="${Patient.id}" readonly="readonly"
-					name="id"><br>
-				<center>
-					<h3>
-						First Name: <input type="text" value="${Patient.firstName}"
-							name="firstName"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Last Name: <input type="text" value="${Patient.lastName}"
-							name="lastName"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Email: <input type="text" value="${Patient.email}" name="email"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Phone: <input type="text" value="${Patient.phone}" name="phone"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Street Address: <input type="text"
-							value="${Patient.streetAddress}" name="streetAddress"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						City: <input type="text" value="${Patient.city}" name="city"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Zip code: <input type="text" value="${Patient.zipCode}"
-							name="zipCode"><br>
-					</h3>
-				</center>
-				<p>Allergy
-				<p>
-					<c:forEach items="${Patient.allergy}" var="allergy">
-						<p>Allergy: ${allergy}</p>
-					</c:forEach>
-				<center>
-					<h3>
-						Doctor-Name: <input type="text" value="${Patient.dName}"
-							name="doctorName"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Doctor-Mail-id: <input type="text" value="${Patient.dMailId}"
-							name="doctorMailId"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Doctor-id: <input type="text" value="${Patient.dId}"
-							name="doctorId"><br>
-					</h3>
-				</center>
-				<center>
-					<h3>
-						Doctor: <input type="text" value="${Patient.doctor.firstName}"
-							name="doctorName"><br>
-					</h3>
-				</center>
-				<strong>Doctor</strong> ${Patient.doctor.firstName} <br> <br>
-				<center>
-					<h3>
-						<input type="submit" value="Save">
-					</h3>
-				</center>
-			</form>
-		</c:if>
+		<a href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete
+			Profile</a> <a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit
+			Profile</a>
 
-
-		
-		<a href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete Profile</a>
-		<a href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit Profile</a>
-		
 	</div>
 
 

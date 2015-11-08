@@ -19,7 +19,15 @@ public class Patient {
     String dName;
 	String dMailId;
 	String dId;
-	String[] allergy;
+	public void setAllergy(List<String> allergy) {
+		this.allergy = allergy;
+	}
+
+	public List<String> getAllergy() {
+		return allergy;
+	}
+
+	List<String> allergy;
     Doctor doctor;
 	public Doctor getDoctor() {
 	return doctor;
@@ -27,12 +35,7 @@ public class Patient {
 public void setDoctor(Doctor doctor) {
 	this.doctor = doctor;
 }
-	public void setAllergy(String[] allergy) {
-		this.allergy = allergy;
-	}
-	public String[] getAllergy() {
-      return allergy;
-		}
+	
 
 	public String getdName() {
 		return dName;

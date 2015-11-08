@@ -92,8 +92,8 @@ public class GetFoodDetailServlet extends HttpServlet {
             		Patient p = new Patient();
 
             		p = patientDAO.getPatient(email);
-            		String[]Allergy=p.getAllergy();
-            		if(Allergy!=null && Allergy.length!=0){
+            		List<String> Allergy=p.getAllergy();
+            		if(Allergy!=null && Allergy.size()!=0){
             		for(String a: Allergy){
             			if(ingredientString.contains(a))
             				System.out.println("Don't consume you are allergic to "+a);

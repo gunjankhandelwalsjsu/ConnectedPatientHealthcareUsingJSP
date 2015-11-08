@@ -1,5 +1,6 @@
 package com.journaldev.mongodb.converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -51,11 +52,14 @@ public class PatientConverter {
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
 		p.setdName((String) doc.get("d_name"));
+		System.out.println("checking patient converter with doctor creds"+(String) doc.get("d_name"));
 		p.setdId((String)doc.get("d_id"));
-	//	BasicDBList allergy = (BasicDBList) doc.get("allergy");
-		p.setAllergy((String[]) doc.get("allergy"));
-
-		//p.setAllergy((String[]) allergy.toArray(new String[allergy.size()]));
+		BasicDBList allergy = (BasicDBList) doc.get("allergy");
+		List<String> all=new ArrayList<String>();
+		for(int i = 0 ; i < allergy.size(); i++) {
+        	all.add(allergy.get(i).toString());
+        }	
+		p.setAllergy(all);
 		p.setdMailId((String)doc.get("d_mail_id"));
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
