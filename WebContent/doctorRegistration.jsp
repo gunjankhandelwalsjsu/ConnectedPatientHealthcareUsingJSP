@@ -54,6 +54,8 @@ ul li{height:40px; margin:15px 0; list-style:none}
 	
 
 	<%-- Add Request --%>
+		<div class="form">
+	
 <div class="header"><h2>Doctor SignUp</h2></div>
 <div class="login">
     <c:if test="${requestScope.doctor eq null}">

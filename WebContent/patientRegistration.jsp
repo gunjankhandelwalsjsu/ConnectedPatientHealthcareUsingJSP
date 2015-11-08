@@ -53,6 +53,7 @@ ul li{height:40px; margin:15px 0; list-style:none}
 	<c:url value="/registerPatient" var="addURL"></c:url>
 	<c:url value="/editPerson" var="editURL"></c:url>
 	<%-- Add Request --%>
+	<div class="form">
 <div class="header"><h2>Patient SignUp</h2></div>
      <div class="login">
     <c:if test="${requestScope.patient eq null}">

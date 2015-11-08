@@ -110,12 +110,18 @@ public class MongoDBDoctorDAO {
 		System.out.println("printindao"+doc.getName());
 		List<String> emailList=new ArrayList<String>();
 		emailList=doc.getPatientEmail();
+		if(emailList!=null && emailList.size()!=0){
 		for(String e:emailList)
 			{
+			 if(!e.equals(null)){
 			System.out.println("Printing emails"+e);
-			Patientlist.add(e);
-
+			Patientlist.add(e);}
+			 
 			}
+		}
+		else 
+		    Patientlist.add("no patient yet");
+
 		
 		return Patientlist;	}
 

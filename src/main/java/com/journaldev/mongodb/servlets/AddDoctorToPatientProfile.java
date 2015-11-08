@@ -1,6 +1,7 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import com.journaldev.mongodb.dao.MongoDBDoctorDAO;
 import com.journaldev.mongodb.dao.MongoDBPatientDAO;
 import com.journaldev.mongodb.dao.MongoDBPersonDAO;
@@ -20,7 +24,9 @@ import com.journaldev.mongodb.model.Doctor;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Person_login;
 import com.journaldev.mongodb.util.EmailNotification;
+import com.journaldev.mongodb.util.SmsSender;
 import com.mongodb.MongoClient;
+import com.twilio.sdk.TwilioRestException;
 
 @WebServlet("/addDoctorToPatientProfile")
 public class AddDoctorToPatientProfile extends HttpServlet { 
@@ -88,10 +94,25 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 			pat=patientDAO.readPatient(p);
 			String pName=pat.getFirstName();
 			String dEmail=d.getEmail();
+			String dPhone=d.getPhone();
+
 			
+			
+			 List<NameValuePair> params = new ArrayList<NameValuePair>(); 
+	 		 params.add(new BasicNameValuePair("To", "+1"+dPhone)); 
+	 		 params.add(new BasicNameValuePair("From", "+16509341358")); 
+	 		 params.add(new BasicNameValuePair("Body", "This is SMS NOTIFICATION TO ADD PATIENT"+ pName));
+	          try {
+				SmsSender.sendSMS(params);
+			} catch (TwilioRestException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			 String[] toEmails = {dEmail};
 	          String emailSubject = "patient wants to add you";
 	          String emailBody = "This is an email sent by"+ pName;
+	         
+	          
 	          EmailNotification notification= new EmailNotification();
 	          try {
 				notification.mail(toEmails,emailSubject,emailBody);

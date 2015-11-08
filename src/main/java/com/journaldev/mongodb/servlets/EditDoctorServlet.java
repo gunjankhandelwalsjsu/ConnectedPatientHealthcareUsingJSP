@@ -1,6 +1,7 @@
 package com.journaldev.mongodb.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -61,8 +62,9 @@ public class EditDoctorServlet extends HttpServlet {
 		String streetAddress = request.getParameter("streetAddress");
 		String state = request.getParameter("state");
 		String city = request.getParameter("city");
-		String zipcode = request.getParameter("zipcode");
+		String zipcode = request.getParameter("zipCode");
 		String phone = request.getParameter("phone");
+	//	String pEmail=request.getParameter("//)
 		
 
 		if ((firstName == null || firstName.equals(""))
@@ -88,7 +90,8 @@ public class EditDoctorServlet extends HttpServlet {
 			p.setCity(city);
 			p.setZipCode(zipcode);
 			p.setPhone(phone);
-
+			List<String> patientEmail = doctorDAO.readAllPatient(p);
+            p.setPatientEmail(patientEmail);
 			doctorDAO.updateDoctor(p);
 	
 			System.out.println("Person edited successfully with id=" + id);

@@ -34,7 +34,7 @@ ul li{height:40px; margin:15px 0; list-style:none}
 .sign{width:90%; padding:0 5%; height:50px; display:table; background:#17233B}
 .sign div{display:inline-block; width:50%; line-height:50px; color:#ccc; font-size:14px}
 .up{text-align:right}
-.up a{display:block; background:#096; text-align:center; height:35px; line-height:35px; width:50%; font-size:16px; text-decoration:none; color:#eee; border-bottom:solid 3px #006633; border-radius:3px; font-weight:bold; margin-left:50%}
+.up a{display:block; background:#096; text-align:center; height:35px; line-height:35px; width:100%; font-size:16px; text-decoration:none; color:#eee; border-bottom:solid 3px #006633; border-radius:3px; font-weight:bold; margin-left:0%}
 @media(max-width:480px){ .form{width:100%}}
 </style>
 </head>
@@ -44,10 +44,8 @@ ul li{height:40px; margin:15px 0; list-style:none}
 <div class="login">
 <form action="">
 <ul>
-
 <li>
-<div class="up"><a href="doctorRegistration.jsp">Doctor Registration</a></div>
-
+<div class="up a"><a href="doctorRegistration.jsp">Doctor Registration</a></div>
 <li>
 <div class="up"><a href="patientRegistration.jsp">Patient Registration</a></div>
 </li>
