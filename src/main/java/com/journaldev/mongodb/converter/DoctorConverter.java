@@ -58,7 +58,7 @@ public class DoctorConverter {
 				spec.add(specialization.get(i).toString());
 			}
 		} else
-			spec.add("no disease");
+			spec.add("No Specializations. Edit your profile to include your specialization");
 		p.setSpecialization(spec);
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());

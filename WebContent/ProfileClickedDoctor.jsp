@@ -62,7 +62,7 @@
 
 			<div class="col-md-3">
 				<ul class="nav nav-pills nav-stacked">
-					<li><a href="Profile.jsp"><span
+					<li><a href="ProfileDoctor.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
 					<li><a href="MainSignUp.jsp"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
@@ -84,6 +84,9 @@
 	<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
 	<div class="container">
 
+<c:url value="/displayPatientList" var="displayURL">
+			<c:param name="id" value="${doctor.id}"></c:param>
+		</c:url>
 		<div class="page-header" id="site-header">
 			<h1>Connected Patient Health Analytics Using Wearables</h1>
 		</div>
@@ -160,24 +163,24 @@
 			</div>
 
 			<div class="col-md-3">
-				<p class="lead">Side Bar Links</p>
+				<p class="lead"></p>
 				<div class="list-group">
-					<a href="#" class="list-group-item active">
-						<h4 class="list-group-item-heading">List Of Doctors</h4>
+					<a href="${displayURL}" class="list-group-item active">
+						<h4 class="list-group-item-heading">List of Patients</h4>
 					</a>
 					<c:if test="${not empty patientList}">
 						<c:forEach items="${patientList}" var="patient">
-							<c:url value="/clickedProfileDoctor" var="clickedProfile">
-								<c:param name="id" value="${patient.id}"></c:param>
-							</c:url>
-
-							<a href="${clickedProfile}" class="list-group-item"><c:out
-									value="${patient.firstName}"></c:out></a>
-
+							<c:if test="${patient eq null}">No Patient</c:if>
+							<c:if test="${patient ne null}">
+								<c:url value="/clickedProfileDoctor" var="clickedProfile">
+									<c:param name="id" value="${patient.id}"></c:param>
+								</c:url>
+								<a href="${clickedProfile}" class="list-group-item"><c:out
+										value="${patient.firstName}"></c:out></a>
+							</c:if>
 
 						</c:forEach>
 					</c:if>
-
 
 				</div>
 			</div>

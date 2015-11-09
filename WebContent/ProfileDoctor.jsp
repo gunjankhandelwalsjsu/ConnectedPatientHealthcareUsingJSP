@@ -53,7 +53,7 @@
 
 			<div class="col-md-3">
 				<ul class="nav nav-pills nav-stacked">
-					<li><a href="Profile.jsp"><span
+					<li><a href="ProfileDoctor.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
 					<li><a href="MainSignUp.jsp"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>

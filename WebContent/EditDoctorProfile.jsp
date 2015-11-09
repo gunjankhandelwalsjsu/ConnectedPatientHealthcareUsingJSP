@@ -126,66 +126,111 @@
 						</center>
 						<form action='<c:out value="${editURL}"></c:out>' method="post">
 							<%--       ID: <input type="text" value="${doctor.id}" readonly="readonly" name="id"><br> --%>
-							<h3>
+							<p>
 								First Name: <input type="text" value="${doctor.firstName}"
 									name="firstName"><br>
-							</h3>
-							<h3>
+							</p>
+							<p>
 								Last Name: <input type="text" value="${doctor.lastName}"
 									name="lastName"><br>
-							</h3>
-							<h3>
+							</p>
+
+
+
+
+							<h3>Specializations</h3>
+							</center>
+
+							<c:if test="${doctor.specialization ne null}">
+								<c:forEach items="${doctor.specialization}" var="specialization">
+									<ul>
+										<li>
+											<p>${specialization}</p>
+										</li>
+									</ul>
+								</c:forEach>
+							</c:if>
+
+							<br> <br> <label>Your existing Specializations
+								are:</label>
+							<c:if test="${doctor.specialization ne null}">
+								<c:forEach items="${doctor.specialization}" var="specialization">
+
+									<ul>
+										<li>
+											<p>${specialization},</p>
+										</li>
+									</ul>
+								</c:forEach>
+							</c:if>
+							<br>
+							<ul class="checkbox-grid">
+								<li><input type="checkbox" name="Specialization"
+									value="Diabetes" /><span>Diabetes</span> <br /></li>
+								<li><input type="checkbox" name="Specialization"
+									value="Blood Pressure" /><span>Blood Pressure</span> <br /></li>
+
+							</ul>
+							<br>
+							<br>
+
+
+
+
+							<center>
+								<h3>Contact Info</h3>
+							</center>
+							<p>
 								Email: <input type="text" value="${doctor.email}" readonly
 									name="email"><br>
-							</h3>
-							<h3>
+							</p>
+							<p>
 								Phone: <input type="text" value="${doctor.phone}" name="phone"><br>
-							</h3>
-							<h3>
+							</p>
+							<p>
 								Street Address: <input type="text"
 									value="${doctor.streetAddress}" name="streetAddress"><br>
-							</h3>
-							<h3>
+							</p>
+							<p>
 								City: <input type="text" value="${doctor.city}" name="city"><br>
-							</h3>
-							<h3>
+							</p>
+							<p>
 								Zip code: <input type="text" value="${doctor.zipCode}"
 									name="zipCode"><br>
-							</h3>
-
-							<h3>
+							</p>
+							<p>
 								<input type="submit" value="Save">
-							</h3>
+							</p>
 						</form>
 					</c:if>
 				</div>
 			</div>
 
-		<!-- End main content -->
-		<div class="col-md-3">
-			<p class="lead"></p>
-			<div class="list-group">
-				<a href="${displayURL}" class="list-group-item active">
-					<h4 class="list-group-item-heading">List of Patients</h4>
-				</a>
-				<c:if test="${not empty patientList}">
-					<c:forEach items="${patientList}" var="patient">
-						<c:if test="${patient eq null}">No Patient</c:if>
-						<c:if test="${patient ne null}">
-							<c:url value="/clickedProfileDoctor" var="clickedProfile">
-								<c:param name="id" value="${patient.id}"></c:param>
-							</c:url>
-							<a href="${clickedProfile}" class="list-group-item"><c:out
-									value="${patient.firstName}"></c:out></a>
-						</c:if>
+			<!-- End main content -->
+			<div class="col-md-3">
+				<p class="lead"></p>
+				<div class="list-group">
+					<a href="${displayURL}" class="list-group-item active">
+						<h4 class="list-group-item-heading">List of Patients</h4>
+					</a>
+					<c:if test="${not empty patientList}">
+						<c:forEach items="${patientList}" var="patient">
+							<c:if test="${patient eq null}">No Patient</c:if>
+							<c:if test="${patient ne null}">
+								<c:url value="/clickedProfileDoctor" var="clickedProfile">
+									<c:param name="id" value="${patient.id}"></c:param>
+								</c:url>
+								<a href="${clickedProfile}" class="list-group-item"><c:out
+										value="${patient.firstName}"></c:out></a>
+							</c:if>
 
-					</c:forEach>
-				</c:if>
+						</c:forEach>
+					</c:if>
+				</div>
+
 			</div>
-
 		</div>
-	</div>
-		
+
 
 
 		<!-- /.container -->

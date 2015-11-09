@@ -103,7 +103,8 @@ public class EditDoctorServlet extends HttpServlet {
 			List<String> patientEmail = doctorDAO.readAllPatient(p);
             p.setPatientEmail(patientEmail);
 			doctorDAO.updateDoctor(p);
-	
+			if (Specialization != null && Specialization.size() != 0) {
+				p.setSpecialization(Specialization);}
 			System.out.println("Person edited successfully with id=" + id);
 			request.setAttribute("success", "Doctor"+p.getFirstName()+" edited successfully");
 			request.setAttribute("Patient", p);
