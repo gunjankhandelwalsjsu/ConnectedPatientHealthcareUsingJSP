@@ -78,9 +78,9 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 		MongoDBPatientDAO patientDAO = new MongoDBPatientDAO(mongo);
 		Patient p = patientDAO.readPatient(patient);
 		p.setDoctor(d);
-		p.setdName(d.getName());
-		p.setdMailId(d.getEmail());
-		p.setdId(d.getId());
+		p.setDoctorName(d.getName());
+		p.setDoctorMailId(d.getEmail());
+		p.setdPhone(d.getId());
 		patientDAO.updatePatientWithDoctor(p);
 		Patient pat = new Patient();
 		pat = patientDAO.readPatient(p);

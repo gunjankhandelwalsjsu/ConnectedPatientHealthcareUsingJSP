@@ -62,7 +62,7 @@ public class EditDoctorServlet extends HttpServlet {
 		String streetAddress = request.getParameter("streetAddress");
 		String state = request.getParameter("state");
 		String city = request.getParameter("city");
-		String zipcode = request.getParameter("zipCode");
+		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
 	//	String pEmail=request.getParameter("//)
 		String[] spec= request.getParameterValues("Specialization"); 
@@ -98,7 +98,7 @@ public class EditDoctorServlet extends HttpServlet {
 			p.setStreetAddress(streetAddress);
 			p.setState(state);
 			p.setCity(city);
-			p.setZipCode(zipcode);
+			p.setZipcode(zipcode);
 			p.setPhone(phone);
 			List<String> patientEmail = doctorDAO.readAllPatient(p);
             p.setPatientEmail(patientEmail);

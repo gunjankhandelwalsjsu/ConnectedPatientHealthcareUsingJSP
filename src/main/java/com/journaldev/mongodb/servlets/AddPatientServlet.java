@@ -36,6 +36,8 @@ public class AddPatientServlet extends HttpServlet {
 		String phone = request.getParameter("phone");	
 		String[] al= request.getParameterValues("Allergy"); 
 		String[] dis= request.getParameterValues("Disease"); 
+		String gender=request.getParameter("gender");
+		String birthDate=request.getParameter("birthDate");	
 
 		List<String> allergy=new ArrayList<String>();
 		List<String> disease=new ArrayList<String>();
@@ -82,15 +84,19 @@ public class AddPatientServlet extends HttpServlet {
 			p.setStreetAddress(streetAddress);
 			p.setState(state);
 			p.setCity(city);
-			p.setZipCode(zipcode);
+			p.setZipcode(zipcode);
 			p.setPhone(phone);
+			p.setBirthDate(birthDate);
+			p.setGender(gender);
 			if (allergy != null && allergy.size() != 0) {
 			p.setAllergy(allergy);
 			}
 			if (disease != null && disease.size() != 0) {
 				p.setDisease(disease);
 				}
-			
+			p.setDoctorName("You have not added Doctor to your profile");
+			p.setDoctorMailId(" ");
+			p.setdPhone(" ");
 			patientDAO.createPatient(p);
 			System.out.println("Patient Added Successfully with id="+p.getId());
 			request.setAttribute("success", "Person Added Successfully");

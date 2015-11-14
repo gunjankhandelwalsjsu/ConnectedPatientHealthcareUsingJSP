@@ -22,24 +22,19 @@ public class PatientConverter {
 				.append("lastName", p.getLastName())
 				.append("password", p.getPassword())
 				.append("streetAddress", p.getStreetAddress())
-				.append("state", p.getState()).append("city", p.getCity())
-				.append("zipcode", p.getZipCode())
+				.append("state", p.getState())
+				.append("city", p.getCity())
+				.append("zipcode", p.getZipcode())
 				.append("phone", p.getPhone())
 				.append("email", p.getEmail())
+				.append("birthDate", p.getBirthDate())
+				.append("gender", p.getGender())
 				.append("allergy", p.getAllergy())
-				.append("Disease", p.getAllergy());
-		if(p.getdMailId().equals(null)){
-			String dname="You have not added doctor";
-			String d_mail_id="";
-			String d_id="";
-			builder.append("d_name", dname)
-			       .append("d_mail_id", d_mail_id)
-			       .append("d_id", d_mail_id);
-		}
-		else
-				builder.append("d_name", p.getdName())
-				.append("d_mail_id", p.getdMailId())
-				.append("d_id", p.getdId());
+				.append("Disease", p.getAllergy())
+				.append("doctorName", p.getDoctorName())
+			    .append("doctorMailId", p.getDoctorMailId())
+			    .append("dPhone", p.getdPhone());
+		
 
 		if (p.getId() != null)
 			builder = builder.append("_id", new ObjectId(p.getId()));
@@ -55,13 +50,16 @@ public class PatientConverter {
 		p.setPassword((String) doc.get("password"));
 		p.setStreetAddress((String) doc.get("streetAddress"));
 		p.setState((String) doc.get("state"));
-		p.setZipCode((String) doc.get("zipcode"));
+		p.setZipcode((String) doc.get("zipcode"));
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
-		p.setdName((String) doc.get("d_name"));
-		System.out.println("checking patient converter with doctor creds" + (String) doc.get("d_name"));
-		p.setdId((String) doc.get("d_id"));
+		p.setDoctorName((String) doc.get("doctorName"));
+		p.setBirthDate((String) doc.get("birthDate"));
+		p.setGender((String) doc.get("gender"));
+		p.setdPhone((String) doc.get("dPhone"));
+		p.setDoctorMailId((String) doc.get("doctorMailId"));
+
 		BasicDBList allergy = (BasicDBList) doc.get("allergy");
 		List<String> all = new ArrayList<String>();
 		if (allergy != null && allergy.size() != 0) {
@@ -83,7 +81,6 @@ public class PatientConverter {
 			dis.add("no disease");
 		p.setDisease(dis);
 
-		p.setdMailId((String) doc.get("d_mail_id"));
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());
 		return p;

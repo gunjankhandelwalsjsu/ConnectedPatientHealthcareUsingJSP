@@ -126,7 +126,16 @@
 								Last Name: <input type="text" value="${Patient.lastName}"
 									name="lastName"><br>
 							</p>
-
+                             <p>
+                             
+                             <input type="radio" name="gender" value="male">Male<br>
+                             <input type="radio" name="gender" value="female">Female
+								
+							</p>
+							<p>
+								Birth Date: <input type="text" value="${Patient.birthDate}"
+									name="birthDate"><br>
+							</p>
 							<p>
 								Email: <input type="text" value="${Patient.email}" name="email"><br>
 							</p>
@@ -145,8 +154,8 @@
 							</p>
 
 							<p>
-								Zip code: <input type="text" value="${Patient.zipCode}"
-									name="zipCode"><br>
+								Zip code: <input type="text" value="${Patient.zipcode}"
+									name="zipcode"><br>
 							</p>
 							<center>
 								<br>
@@ -157,7 +166,7 @@
 								<b>Food Allergies
 									</b>
 							</p>
-							<br> <label>Your existing Diseases are:</label>
+							<br> <label>Your existing Allergies are:</label>
 							<c:forEach items="${Patient.disease}" var="disease">
 								 ${disease}, 
 							</c:forEach>
@@ -222,15 +231,15 @@
 							<center>
 								<h3>Doctor Information</h3>
 							</center>
-							<c:if test="${Patient.dId eq null}">
+							<c:if test="${Patient.doctorName eq null}">
 							No Doctors Added to your profile. You need to select a doctor from our list of doctors.
 							</c:if>
 
-							<c:if test="${Patient.dId ne null}">
+							<c:if test="${Patient.doctorName ne null}">
 								<ul>
-									<li><b> Id:</b>${Patient.dId}</li>
-									<li><b> Name:</b>${Patient.dName}</li>
-									<li><b> Email:</b>${Patient.dMailId}</li>
+									<li><b> Name of Doctor:</b>${Patient.doctorName}</li>
+									<li><b> Phone:</b>${Patient.dPhone}</li>
+									<li><b> Email:</b>${Patient.doctorMailId}</li>
 
 								</ul>
 							</c:if>

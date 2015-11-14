@@ -149,7 +149,7 @@
 							<ul>
 								<li><b> Email:</b>${doctor.email}</li>
 								<li><b> Phone:</b> ${doctor.phone}</li>
-								<li><b> Address:</b>${doctor.streetAddress}<br>${doctor.city}<br>${doctor.state}<br>${doctor.zipCode}</li>
+								<li><b> Address:</b>${doctor.streetAddress}<br>${doctor.city}<br>${doctor.state}<br>${doctor.zipcode}</li>
 							</ul>
 							<br /> <br /> <b>office hours:</b> <br /> Monday-Thursday :
 							8.30am to 5.pm Friday-8.30am to 3.30pm

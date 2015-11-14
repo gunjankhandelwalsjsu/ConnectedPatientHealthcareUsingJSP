@@ -75,6 +75,12 @@ public class EditPatientServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String[] al= request.getParameterValues("Allergy"); 
 		String[] dis= request.getParameterValues("Disease"); 
+		String birthDate=request.getParameter("birthDate");
+		String gender=request.getParameter("gender");
+		String doctorName=request.getParameter("doctorName");
+		String doctorMailId=request.getParameter("doctorMailId");
+		String dPhone=request.getParameter("dPhone");
+
 
 		List<String> allergy=new ArrayList<String>();
 		List<String> disease=new ArrayList<String>();
@@ -115,13 +121,18 @@ public class EditPatientServlet extends HttpServlet {
 			p.setStreetAddress(streetAddress);
 			p.setState(state);
 			p.setCity(city);
-			p.setZipCode(zipcode);
+			p.setZipcode(zipcode);
 			p.setPhone(phone);
+			p.setBirthDate(birthDate);
+			p.setGender(gender);
 			if (allergy != null && allergy.size() != 0) {
 				p.setAllergy(allergy);}
 			if (disease != null && disease.size() != 0) {
 				p.setDisease(disease);
 				}
+			p.setDoctorName(doctorName);
+			p.setDoctorMailId(doctorMailId);
+			p.setdPhone(dPhone);
 			patientDAO.updatePatient(p);
 			 MongoDBDoctorDAO doctorDAO = new MongoDBDoctorDAO(mongo);
 		        List<Doctor> doctors = doctorDAO.readAllDoctor();
@@ -130,7 +141,7 @@ public class EditPatientServlet extends HttpServlet {
 		        request.setAttribute("doctors", doctors);
 
 			System.out.println("Person edited successfully with id=" + id);
-			request.setAttribute("success", "Profile of Patient "+p.getFirstName()+"edited successfully");
+			request.setAttribute("success", "Profile of Patient "+p.getFirstName()+" edited successfully");
 			request.setAttribute("Patient", p);
 			session.setAttribute("Patient", p);
 

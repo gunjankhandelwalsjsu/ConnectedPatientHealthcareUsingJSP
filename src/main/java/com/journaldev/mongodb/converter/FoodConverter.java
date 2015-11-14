@@ -22,7 +22,7 @@ public class FoodConverter {
 				.append("streetAddress",p.getStreetAddress() )
 				.append("state", p.getState())
 				.append("city", p.getCity())
-				.append("zipcode", p.getZipCode())
+				.append("zipcode", p.getZipcode())
 				.append("phone", p.getPhone())
 				.append("email", p.getEmail());
 		if(!p.getPatientEmail().equals(null))
@@ -42,7 +42,7 @@ public class FoodConverter {
 		p.setPassword((String) doc.get("password"));
 		p.setStreetAddress((String) doc.get("streetAddress"));
 		p.setState((String) doc.get("state"));
-		p.setZipCode((String) doc.get("zipcode"));
+		p.setZipcode((String) doc.get("zipcode"));
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));

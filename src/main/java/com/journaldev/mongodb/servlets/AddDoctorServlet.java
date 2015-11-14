@@ -33,6 +33,7 @@ public class AddDoctorServlet extends HttpServlet {
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
 		String[] spec= request.getParameterValues("Disease"); 
+
 		List<String> specialization=new ArrayList<String>();
 
 		if(spec!=null&&spec.length!=0){
@@ -68,7 +69,7 @@ public class AddDoctorServlet extends HttpServlet {
 			p.setStreetAddress(streetAddress);
 			p.setState(state);
 			p.setCity(city);
-			p.setZipCode(zipcode);
+			p.setZipcode(zipcode);
 			p.setPhone(phone);
 			if (specialization != null && specialization.size() != 0) {
 				p.setSpecialization(specialization);

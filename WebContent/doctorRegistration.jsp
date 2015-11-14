@@ -86,7 +86,7 @@ ul li{height:40px; margin:15px 0; list-style:none}
                 <span class="un"><i class="fa fa-user"></i></span><input type="text" name="city" required class="text" placeholder="City"/></li>
 
              <li>
-                <span class="un"><i class="fa fa-user"></i></span><input type="text" name="Zipcode" required class="text" placeholder="Zip Code"/></li>
+                <span class="un"><i class="fa fa-user"></i></span><input type="text" name="zipcode" required class="text" placeholder="Zip Code"/></li>
 
                 <label>Speciality:</label><br/>
 

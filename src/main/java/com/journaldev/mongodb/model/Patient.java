@@ -12,14 +12,59 @@ public class Patient {
     String streetAddress;
     String city;
     String state;
-    String zipCode;
+    String zipcode;
     String phone;
     String email;
     List<String> disease;
-    String dName;
-	String dMailId;
-	String dId;
+    String doctorName;
+    public String getDoctorName() {
+		return doctorName;
+	}
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+	public String getDoctorMailId() {
+		return doctorMailId;
+	}
+
+	public void setDoctorMailId(String doctorMailId) {
+		this.doctorMailId = doctorMailId;
+	}
+
+	public String getdPhone() {
+		return dPhone;
+	}
+
+	public void setdPhone(String dPhone) {
+		this.dPhone = dPhone;
+	}
+
+	String doctorMailId;
+    String dPhone;
 	List<String> allergy;
+   
+
+	public String getBirthDate() {
+		return BirthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		BirthDate = birthDate;
+	}
+
+	public String getGender() {
+		return Gender;
+	}
+
+	public void setGender(String gender) {
+		Gender = gender;
+	}
+
+	String image;
+    String BirthDate;
+    String Gender;
 
 	public void setAllergy(List<String> allergy) {
 		this.allergy = allergy;
@@ -38,29 +83,7 @@ public void setDoctor(Doctor doctor) {
 }
 	
 
-	public String getdName() {
-		return dName;
-	}
-
-	public void setdName(String dName) {
-		this.dName = dName;
-	}
-
-	public String getdMailId() {
-		return dMailId;
-	}
-
-	public void setdMailId(String dMailId) {
-		this.dMailId = dMailId;
-	}
-
-	public String getdId() {
-		return dId;
-	}
-
-	public void setdId(String dId) {
-		this.dId = dId;
-	}
+	
 
 	
 
@@ -120,12 +143,12 @@ public void setDoctor(Doctor doctor) {
 		this.state = state;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setZipcode(String zipCode) {
+		this.zipcode = zipCode;
 	}
 
 	public String getPhone() {

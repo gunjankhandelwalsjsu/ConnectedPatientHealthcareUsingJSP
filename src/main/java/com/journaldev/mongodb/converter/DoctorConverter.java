@@ -24,7 +24,7 @@ public class DoctorConverter {
 				.append("streetAddress",p.getStreetAddress() )
 				.append("state", p.getState())
 				.append("city", p.getCity())
-				.append("zipcode", p.getZipCode())
+				.append("zipcode", p.getZipcode())
 				.append("phone", p.getPhone())
 				.append("Specialization", p.getSpecialization())
 				.append("email", p.getEmail());
@@ -45,7 +45,7 @@ public class DoctorConverter {
 		p.setPassword((String) doc.get("password"));
 		p.setStreetAddress((String) doc.get("streetAddress"));
 		p.setState((String) doc.get("state"));
-		p.setZipCode((String) doc.get("zipcode"));
+		p.setZipcode((String) doc.get("zipcode"));
 		p.setPhone((String) doc.get("phone"));
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));

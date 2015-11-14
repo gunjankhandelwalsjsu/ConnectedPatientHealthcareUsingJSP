@@ -14,7 +14,7 @@ public class Doctor {
     String streetAddress;
     String city;
     String state;
-    String zipCode;
+    String zipcode;
     String phone;
     String email;
     public List<String> getSpecialization() {
@@ -98,12 +98,12 @@ public class Doctor {
 		this.state = state;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setZipcode(String zipCode) {
+		this.zipcode = zipCode;
 	}
 
 	public String getPhone() {

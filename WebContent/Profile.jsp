@@ -124,6 +124,10 @@
 						</center>
 						<ul>
 							<li><b> Name:</b>${Patient.firstName} ${Patient.lastName}</li>
+							<li><b> Gender:</b>${Patient.gender} </li>
+							<li><b> Birth Date:</b>${Patient.birthDate} </li>
+							
+							
 
 						</ul>
 						<br />
@@ -135,7 +139,7 @@
 							<ul>
 								<li><b> Email:</b>${Patient.email}</li>
 								<li><b> Phone:</b> ${Patient.phone}</li>
-								<li><b> Address:</b>${Patient.streetAddress}<br>${Patient.city}<br>${Patient.state}<br>${Patient.zipCode}</li>
+								<li><b> Address:</b>${Patient.streetAddress}<br>${Patient.city}<br>${Patient.state}<br>${Patient.zipcode}</li>
 							</ul>
 						</address>
 
@@ -173,15 +177,15 @@
 							<br>
 							<h3>Doctor Information</h3>
 						</center>
-						<c:if test="${Patient.dId eq null}">
+						<c:if test="${Patient.doctorName eq null}">
 							No Doctors Added to your profile. You need to select a doctor from our list of doctors.
 							</c:if>
 
-						<c:if test="${Patient.dId ne null}">
+						<c:if test="${Patient.doctorName ne null}">
 							<ul>
-								<li><b> Id:</b>${Patient.dId}</li>
-								<li><b> Name:</b>${Patient.dName}</li>
-								<li><b> Email:</b>${Patient.dMailId}</li>
+								<li><b> Name:</b>${Patient.doctorName}</li>							
+								<li><b> Phone:</b>${Patient.dPhone}</li>
+								<li><b> Email:</b>${Patient.doctorMailId}</li>
 
 							</ul>
 						</c:if>

@@ -119,6 +119,12 @@
 						</center>
 						<ul>
 							<li><b> Patient Name:</b>${patient.firstName} ${patient.lastName}</li>
+							<li><b> Patient Gender:</b>${patient.gender} </li>
+							<li><b> Patient Birth Date:</b>${patient.birthDate} 
+							
+							</li>
+							
+							
 
 						</ul>
 						<center>
@@ -128,7 +134,7 @@
 							<ul>
 								<li><b> Email:</b>${patient.email}</li>
 								<li><b> Phone:</b> ${patient.phone}</li>
-								<li><b> Address:</b>${patient.streetAddress}<br>${patient.city}<br>${patient.state}<br>${patient.zipCode}</li>
+								<li><b> Address:</b>${patient.streetAddress}<br>${patient.city}<br>${patient.state}<br>${patient.zipcode}</li>
 							</ul>
 							<br /> <br />
 						</address>
