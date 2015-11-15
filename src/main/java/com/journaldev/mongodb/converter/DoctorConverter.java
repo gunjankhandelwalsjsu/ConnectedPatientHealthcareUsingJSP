@@ -26,7 +26,7 @@ public class DoctorConverter {
 				.append("city", p.getCity())
 				.append("zipcode", p.getZipcode())
 				.append("phone", p.getPhone())
-				.append("Specialization", p.getSpecialization())
+				.append("specialization", p.getSpecialization())
 				.append("email", p.getEmail());
 		if(!p.getPatientEmail().equals(null))
              builder.append("patientEmail",p.getPatientEmail());
@@ -50,15 +50,18 @@ public class DoctorConverter {
 		p.setEmail((String) doc.get("email"));
 		p.setCity((String) doc.get("city"));
 		p.setPatientEmail((List<String>) doc.get("patientEmail"));
-		BasicDBList specialization = (BasicDBList) doc.get("Specialization");
+		
+		
+		BasicDBList specialization = (BasicDBList) doc.get("specialization");
 		List<String> spec = new ArrayList<String>();
 		if (specialization != null && specialization.size() != 0) {
 
 			for (int i = 0; i < specialization.size(); i++) {
 				spec.add(specialization.get(i).toString());
 			}
-		} else
-			spec.add("No Specializations. Edit your profile to include your specialization");
+		}  
+		else
+			spec.add("No specialization");
 		p.setSpecialization(spec);
 		ObjectId id = (ObjectId) doc.get("_id");
 		p.setId(id.toString());

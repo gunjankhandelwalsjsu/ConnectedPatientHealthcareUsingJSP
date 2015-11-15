@@ -113,6 +113,7 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 			}
 			System.out.println("inside addition of dctor" + p.getEmail());
 		}
+		if(!PatientList.contains(p.getEmail()))
 		PatientList.add(p.getEmail());
 		for (int i = 0; i < PatientList.size(); i++)
 			System.out.println(PatientList.get(i));

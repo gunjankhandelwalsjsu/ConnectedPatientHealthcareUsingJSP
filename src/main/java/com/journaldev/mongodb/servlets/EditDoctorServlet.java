@@ -65,12 +65,12 @@ public class EditDoctorServlet extends HttpServlet {
 		String zipcode = request.getParameter("zipcode");
 		String phone = request.getParameter("phone");
 	//	String pEmail=request.getParameter("//)
-		String[] spec= request.getParameterValues("Specialization"); 
-
+		String[] spec= request.getParameterValues("specialization"); 
 		List<String> Specialization=new ArrayList<String>();
 
 		if(spec!=null&&spec.length!=0){
 		for(int i=0;i<spec.length;i++){
+			System.out.println(spec[i]);
 			Specialization.add(spec[i]);
 		}
 		}
@@ -102,12 +102,16 @@ public class EditDoctorServlet extends HttpServlet {
 			p.setPhone(phone);
 			List<String> patientEmail = doctorDAO.readAllPatient(p);
             p.setPatientEmail(patientEmail);
+			p.setSpecialization(Specialization);
+
 			doctorDAO.updateDoctor(p);
-			if (Specialization != null && Specialization.size() != 0) {
-				p.setSpecialization(Specialization);}
+			
+			
 			System.out.println("Person edited successfully with id=" + id);
 			request.setAttribute("success", "Doctor"+p.getFirstName()+" edited successfully");
 			request.setAttribute("Patient", p);
+			request.setAttribute("doctor", p);
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/ProfileDoctor.jsp");
 			rd.forward(request, response);

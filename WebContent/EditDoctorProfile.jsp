@@ -141,33 +141,21 @@
 							<h3>Specializations</h3>
 							</center>
 
-							<c:if test="${doctor.specialization ne null}">
-								<c:forEach items="${doctor.specialization}" var="specialization">
-									<ul>
-										<li>
-											<p>${specialization}</p>
-										</li>
-									</ul>
-								</c:forEach>
-							</c:if>
+							
 
 							<br> <br> <label>Your existing Specializations
 								are:</label>
-							<c:if test="${doctor.specialization ne null}">
 								<c:forEach items="${doctor.specialization}" var="specialization">
 
-									<ul>
-										<li>
-											<p>${specialization},</p>
-										</li>
-									</ul>
+									
+											<p>${specialization},
+
 								</c:forEach>
-							</c:if>
 							<br>
 							<ul class="checkbox-grid">
-								<li><input type="checkbox" name="Specialization"
+								<li><input type="checkbox" name="specialization"
 									value="Diabetes" /><span>Diabetes</span> <br /></li>
-								<li><input type="checkbox" name="Specialization"
+								<li><input type="checkbox" name="specialization"
 									value="Blood Pressure" /><span>Blood Pressure</span> <br /></li>
 
 							</ul>
@@ -195,8 +183,8 @@
 								City: <input type="text" value="${doctor.city}" name="city"><br>
 							</p>
 							<p>
-								Zip code: <input type="text" value="${doctor.zipCode}"
-									name="zipCode"><br>
+								Zip code: <input type="text" value="${doctor.zipcode}"
+									name="zipcode"><br>
 							</p>
 							<p>
 								<input type="submit" value="Save">

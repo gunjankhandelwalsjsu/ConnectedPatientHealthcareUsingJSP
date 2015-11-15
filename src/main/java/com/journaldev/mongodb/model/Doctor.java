@@ -16,6 +16,7 @@ public class Doctor {
     String state;
     String zipcode;
     String phone;
+	List<String> specialization;
     String email;
     public List<String> getSpecialization() {
 		return specialization;
@@ -25,7 +26,6 @@ public class Doctor {
 		this.specialization = specialization;
 	}
 
-	List<String> specialization;
 
    
 	List<String> patientEmail;
