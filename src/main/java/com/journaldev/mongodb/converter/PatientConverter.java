@@ -30,7 +30,7 @@ public class PatientConverter {
 				.append("birthDate", p.getBirthDate())
 				.append("gender", p.getGender())
 				.append("allergy", p.getAllergy())
-				.append("Disease", p.getAllergy())
+				.append("Disease", p.getDisease())
 				.append("doctorName", p.getDoctorName())
 			    .append("doctorMailId", p.getDoctorMailId())
 			    .append("dPhone", p.getdPhone());
