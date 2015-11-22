@@ -90,7 +90,10 @@
 		<c:url value="/deletePerson" var="deleteURL">
 			<c:param name="id" value="${person.id}"></c:param>
 		</c:url>
-
+        <c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${Patient.id}"></c:param>
+          
+          </c:url>
 		<div class="row">
 
 			<div class="col-md-9">
@@ -107,9 +110,12 @@
 				</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<img src="images/doctor2.jpg" alt="Image"
-						style="float: left; margin-right: 15px; margin-bottom: 15px;" />
 
+					
+					<div id="preview">
+						<img src="${getPhoto}" alt="Profile Photo"
+							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					</div>
 
 					<p></p>
 					<br /> <br /> <br /> <br /> <br /> <br /> <br />

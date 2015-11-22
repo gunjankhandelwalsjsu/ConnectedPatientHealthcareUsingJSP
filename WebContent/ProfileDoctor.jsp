@@ -87,7 +87,10 @@
 		</c:url>
 		<c:url value="/deletePerson" var="deleteURL"></c:url>
 		<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
-
+<c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${doctor.id}"></c:param>
+          
+          </c:url>
 		<div class="row">
 
 			<div class="col-md-9">
@@ -104,8 +107,12 @@
 				</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<img src="images/doctor2.jpg" alt="Image"
-						style="float: left; margin-right: 15px; margin-bottom: 15px;" />
+
+					
+					<div id="preview">
+						<img src="${getPhoto}" alt="Profile Photo"
+							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					</div>
 					<p>Dr.Angel's primary interests are in the role of how viral
 						infections play in the development of allergic diseases, such as
 						asthma. He has an active NIH sponsored research program studying

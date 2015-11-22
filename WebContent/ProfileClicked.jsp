@@ -90,10 +90,15 @@
 		</c:if>
 		<c:url value="/editPerson" var="editURL"></c:url>
 		<c:url value="/clickedProfile" var="clickedProfile"></c:url>
+         
 		<c:url value="/addDoctorToPatientProfile"
 			var="addDoctorToPatientProfileURL">
 			<c:param name="id" value="${doctor.id}"></c:param>
 		</c:url>
+		 <c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${doctor.id}"></c:param>
+          
+          </c:url>
 
 		<div class="row">
 
@@ -111,8 +116,13 @@
 				</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<img src="images/doctor2.jpg" alt="Image"
-						style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+
+					
+					<div id="preview">
+						<img src="${getPhoto}" alt="Profile Photo"
+							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					</div>
+
 					<p></p>
 					<br /> <br /> <br />
 

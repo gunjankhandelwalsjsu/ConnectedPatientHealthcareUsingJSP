@@ -86,6 +86,9 @@ public Patient getPatient(String email) {
 		return PatientConverter.toPatient(data);
 		}
 }
+
+
+
 	public Patient readPatient(Patient p) {
 		DBObject query = BasicDBObjectBuilder.start()
 				.append("_id", new ObjectId(p.getId())).get();

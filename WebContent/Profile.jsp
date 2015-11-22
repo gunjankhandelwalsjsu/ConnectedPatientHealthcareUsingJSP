@@ -23,6 +23,33 @@
 
 </head>
 <body>
+<c:if test="${requestScope.error ne null}">
+			<strong style="color: red;"><c:out
+					value="${requestScope.error}"></c:out></strong>
+		</c:if>
+		<c:if test="${requestScope.success ne null}">
+			<strong style="color: green;"><c:out
+					value="${requestScope.success}"></c:out></strong>
+		</c:if>
+
+		<c:url value="/clickedProfile" var="clickedProfile">
+			<c:param name="id" value="${Patient.id}"></c:param>
+		</c:url>
+		<c:url value="/deletePerson" var="deleteURL">
+			<c:param name="id" value="${person.id}"></c:param>
+		</c:url>
+		<c:url value="/EditPatientProfile.jsp" var="editURL">
+			<c:param name="id" value="${Patient.id}"></c:param>
+		</c:url>
+          <c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${Patient.id}"></c:param>
+          
+          </c:url>
+          
+          <c:url var="getChart" value="/ChartServlet" >
+          <c:param name="id" value="${Patient.id}"></c:param>         
+          </c:url>
+          
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -53,7 +80,7 @@
 
 				<li><a href="contact.jsp">Contact Us</a></li>
 
-				<li><a href="chart.jsp">Pie Chart</a></li>
+				<li><a href="${getChart}">Pie Chart</a></li>
 
 				<li><a href="Profile.jsp">My profile</a></li>
 
@@ -79,25 +106,7 @@
 		</div>
 
 
-		<c:if test="${requestScope.error ne null}">
-			<strong style="color: red;"><c:out
-					value="${requestScope.error}"></c:out></strong>
-		</c:if>
-		<c:if test="${requestScope.success ne null}">
-			<strong style="color: green;"><c:out
-					value="${requestScope.success}"></c:out></strong>
-		</c:if>
-
-		<c:url value="/clickedProfile" var="clickedProfile">
-			<c:param name="id" value="${Patient.id}"></c:param>
-		</c:url>
-		<c:url value="/deletePerson" var="deleteURL">
-			<c:param name="id" value="${person.id}"></c:param>
-		</c:url>
-		<c:url value="/EditPatientProfile.jsp" var="editURL">
-			<c:param name="id" value="${Patient.id}"></c:param>
-		</c:url>
-
+		
 		<div class="row">
 			<div class="col-md-9">
 
@@ -113,8 +122,13 @@
 				</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<img src="images/doctor2.jpg" alt="Image"
-						style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+
+					
+					<div id="preview">
+						<img src="${getPhoto}" alt="Profile Photo"
+							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					</div>
+
 					<p></p>
 					<br /> <br /> <br />
 					<%-- General Info--%>
@@ -124,10 +138,10 @@
 						</center>
 						<ul>
 							<li><b> Name:</b>${Patient.firstName} ${Patient.lastName}</li>
-							<li><b> Gender:</b>${Patient.gender} </li>
-							<li><b> Birth Date:</b>${Patient.birthDate} </li>
-							
-							
+							<li><b> Gender:</b>${Patient.gender}</li>
+							<li><b> Birth Date:</b>${Patient.birthDate}</li>
+
+
 
 						</ul>
 						<br />
@@ -173,8 +187,7 @@
 								</c:forEach>
 							</c:if>
 						<center>
-							<br>
-							<br>
+							<br> <br>
 							<h3>Doctor Information</h3>
 						</center>
 						<c:if test="${Patient.doctorName eq null}">
@@ -183,7 +196,7 @@
 
 						<c:if test="${Patient.doctorName ne null}">
 							<ul>
-								<li><b> Name:</b>${Patient.doctorName}</li>							
+								<li><b> Name:</b>${Patient.doctorName}</li>
 								<li><b> Phone:</b>${Patient.dPhone}</li>
 								<li><b> Email:</b>${Patient.doctorMailId}</li>
 

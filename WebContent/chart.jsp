@@ -9,16 +9,60 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-     <title>Connected Patient Health Analytics Using Wearables</title>
+     <title>Google Chart - Servlet 3</title>
 
+    <!-- Bootstrap core CSS -->
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
     <link href="css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+    
+    
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    // Load the Visualization API and the piechart package.
+         google.load('visualization', '1', {'packages':['annotatedtimeline']});
 
+ 
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+ 
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+ 
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Date');
+        data.addColumn('temperature', 'Temperature');
+        data.addRows([
+                      [new Date(2008, 1 ,1), 30000],
+                      [new Date(2008, 1 ,2), 14045],
+                      [new Date(2008, 1 ,3), 55022],
+                      [new Date(2008, 1 ,4), 75284],
+                      [new Date(2008, 1 ,5), 41476],
+                      [new Date(2008, 1 ,6), 33322]
+                    ]);     
+       
+ 
+        // Set chart options
+     
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div'));
+        chart.draw(data, {displayAnnotations: true});
+
+    }
+</script>
+ 
+   
+ 	
 </head>
+
 
 <body>
 
@@ -80,11 +124,17 @@
         <div class="row">
 
             <div class="col-md-9">
-                <h1 style="margin-top: 0">Doctors Graph</h1>
+                <h1 style="margin-top: 0"> Graph</h1>
                 <div class="clearfix" style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">                    
                     <canvas id="canvas" height="250" width="250" style="margin: 0 auto;"></canvas>   
-                    
-                    <a class="btn btn-block btn-primary" href="topic.html" style="margin-top: 20px;">&leftarrow; Go Back</a>
+                   <div style="width: 600px;">
+                     <div id="chart_div"></div>
+    </div>
+    <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
+                      <p I am not displaying></p>
+                    </div>
+                    <a class="btn btn-block btn-primary" href="topic.jsp" style="margin-top: 20px;">&leftarrow; Go Back</a>
                 </div>
             </div>
             
@@ -110,51 +160,10 @@
         </div>
 
     </div>
-    <!-- /.container -->
 
-    <div class="container">
+   </body> 
+          
+   
 
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="text-right">Copyright &copy; Company 2014 - Hardik Shah
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/Chart.min.js"></script>
-    
-    <script>
-
-		var pieData = [
-				{
-					value: 30,
-					color:"#F38630"
-				},
-				{
-					value : 50,
-					color : "#E0E4CC"
-				},
-				{
-					value : 100,
-					color : "#69D2E7"
-				}
-			
-			];
-
-	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
-	
-	</script>
-
-</body>
 
 </html>

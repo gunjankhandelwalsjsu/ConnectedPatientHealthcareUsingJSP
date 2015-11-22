@@ -83,6 +83,10 @@
 	<c:url value="/editPerson" var="editURL"></c:url>
 	<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
 	<div class="container">
+	<c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${patient.id}"></c:param>
+          
+          </c:url>
 
 <c:url value="/displayPatientList" var="displayURL">
 			<c:param name="id" value="${doctor.id}"></c:param>
@@ -109,10 +113,14 @@
 				</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<img src="images/doctor2.jpg" alt="Image"
-						style="float: center; margin-right: 15px; margin-bottom: 15px;" />
-					<p></p>
+
+					
+					<div id="preview">
+						<img src="${getPhoto}" alt="Profile Photo"
+							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					</div><p></p>
 					<br /> <br /> <br />
+					<%-- General Info--%>
 					<c:if test="${patient ne null}">
 						<center>
 							<h3>General Info of Patient ${patient.firstName} requested</h3>
