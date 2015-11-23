@@ -6,27 +6,13 @@ import java.util.List;
 
 public class ChartData {
 	
-int y;
-public int getY() {
-	return y;
+String time;
+	public String getTime() {
+	return time;
 }
-public void setY(int y) {
-	this.y = y;
+public void setTime(String time) {
+	this.time = time;
 }
-public int getM() {
-	return m;
-}
-public void setM(int m) {
-	this.m = m;
-}
-public int getDa() {
-	return da;
-}
-public void setDa(int da) {
-	this.da = da;
-}
-int m;
-int da;
 	public Double getTemperature() {
 		return temperature;
 	}

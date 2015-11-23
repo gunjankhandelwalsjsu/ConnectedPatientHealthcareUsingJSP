@@ -49,7 +49,6 @@ import com.mongodb.MongoClient;
 			//System.out.println(p.getEmail());
 			String email=p.getEmail();
 			
-			ChartData c=new ChartData();
 			MongoDBTemperatureDAO temperatureDAO = new MongoDBTemperatureDAO(mongo);
             Temperature t=new Temperature();
             t=temperatureDAO.getTemperature(email);
@@ -60,16 +59,8 @@ import com.mongodb.MongoClient;
             	ChartData d=new ChartData();
             	d.setTemperature(t.getTemp().get(i));
             	String timestamp = t.getTime().get(i).toString();
+            	d.setTime(timestamp);
             	
-            	String parts=timestamp.replace("[","");
-            	int y=Integer.parseInt(parts.substring(0,4));
-            	int m=Integer.parseInt(parts.substring(5,7));
-            	int da=Integer.parseInt(parts.substring(8,10));
-
-            	d.setY(y);
-            	d.setM(m);
-            	d.setDa(da);
-            	System.out.println(da);
             chartDataList.add(d);
             }
             
