@@ -2,6 +2,7 @@ package com.journaldev.mongodb.servlets;
 
 
 	import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,9 @@ import java.util.List;
 	import javax.servlet.http.HttpServlet;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.json.simple.JSONArray;
 
 import com.journaldev.mongodb.dao.MongoDBPatientDAO;
 import com.journaldev.mongodb.dao.MongoDBTemperatureDAO;
@@ -55,22 +59,27 @@ import com.mongodb.MongoClient;
 
             List<ChartData> chartDataList;
             chartDataList = new ArrayList<ChartData>();
+            JSONArray jsonArray=new JSONArray();
+
             for(int i=0;i<t.getTemp().size();i++){
+                JSONObject jsonObj = new JSONObject();
             	ChartData d=new ChartData();
             	d.setTemperature(t.getTemp().get(i));
             	String timestamp = t.getTime().get(i).toString();
+                jsonObj.put("temperature", d.getTemperature());           
             	d.setTime(timestamp);
-            	
-            chartDataList.add(d);
-            }
+            	jsonObj.put("time", d.getTime());
+                jsonArray.add(jsonObj);
+            }       
             
-		System.out.println("we r getting u botoom charts"+chartDataList.get(3).getTemperature());
+            response.setContentType("application/json");
+           PrintWriter out = response.getWriter();
+            out.println(jsonArray);
+            out.close();
 
-	        request.setAttribute("chartDataList", chartDataList);
-	        RequestDispatcher requestDispatcher = request
-	                .getRequestDispatcher("/pieChart.jsp");
-	        requestDispatcher.forward(request, response);
-	    }
+		
+	       
+	    }  
 
 	    /**
 	     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
