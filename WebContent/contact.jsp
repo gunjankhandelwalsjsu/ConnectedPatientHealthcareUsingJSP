@@ -42,15 +42,14 @@
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topic
                       <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Alergy</a></li>
-                        <li><a href="#">Blood Pressure</a></li>
-                        <li><a href="#">Sugar</a></li> 
+                       <li><a href="FoodAllergy.jsp">Food Allergies</a></li>
+                        <li><a href="BloodPressure.jsp">Blood Pressure</a></li>
+                        <li><a href="Diabetics.jsp">Diabetics</a></li> 
                       </ul>
                     </li>
                     
                     <li><a href="Doctors.jsp">Doctors</a></li>
                     
-                    <li><a href="#">Patient</a></li>
                     
                     <li><a href="aboutUs.jsp">About Us</a></li>
                     
@@ -58,13 +57,12 @@
                     
                     
                     
-                    <li><a href="chart.jsp">Pie Chart</a></li>
                     </ul>
                      <div class="col-md-3">
-				<ul class="nav nav-pills nav-stacked">
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="Profile.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
-					<li><a href="MainSignUp.jsp"><span
+					<li><a href="${logOutURL}"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
 				</ul>
 			</div>
@@ -83,7 +81,7 @@
             <div class="row">
 
                 <div class="col-md-9">
-                    <h1 style="margin-top: 0">Contact Us</h1>
+                    <h1 style="margin-top: 0"><center>Contact Us</center></h1>
                     <div class="clearfix" style="text-align: justify">
                         <form class="form-horizontal" style="padding: 30px 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
                                 <div class="form-group">
@@ -118,21 +116,20 @@
                 <!-- End main content -->
 
                 <div class="col-md-3">
-                    <p class="lead">Side Bar Links</p>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">
-                            <h4 class="list-group-item-heading">Side Bar Link 1</h4>
-                            <p class="list-group-item-text">This is content you can add your text here</p>
-                        </a>
-                        <a href="#" class="list-group-item">Side Bar Link 2</a>
-                        <a href="#" class="list-group-item">Side Bar Link 3</a>
-                        <a href="#" class="list-group-item">Side Bar Link 4</a>
-                        <a href="#" class="list-group-item">Side Bar Link 5</a>
-                        <a href="#" class="list-group-item active">Side Bar Link 6</a>                    
-                    </div>
-
-                    <button class="btn btn-danger btn-block btn-lg">Button</button>
+                <p></p><br/>
+                <p></p>
+                                <div class="list-group">
+                    <a href="Doctors.jsp" class="list-group-item active">
+                        <h4 class="list-group-item-heading">Doctors</h4>  
+                      </a>
+                    <a href="patientRegistration.jsp" class="list-group-item">Patient</a>
+                    <a href="aboutUs.jsp" class="list-group-item">About us</a>
+                
+                    <a href="contact.jsp" class="list-group-item active">Contact us</a>                    
                 </div>
+                
+                <a href="chart.jsp"><button class="btn btn-danger btn-block btn-lg" >Analytics</button></a>
+            </div>
 
             </div>
 

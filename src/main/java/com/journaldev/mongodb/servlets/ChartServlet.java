@@ -25,6 +25,7 @@ import com.journaldev.mongodb.dao.MongoDBTemperatureDAO;
 import com.journaldev.mongodb.model.ChartData;
 import com.journaldev.mongodb.model.Patient;
 import com.journaldev.mongodb.model.Temperature;
+import com.journaldev.mongodb.util.dconnect;
 import com.mongodb.MongoClient;
 
 	/**
@@ -52,8 +53,10 @@ import com.mongodb.MongoClient;
 			//Patient p=patientDAO.fetchPatient(id_patient);
 			//System.out.println(p.getEmail());
 			String email=p.getEmail();
+			dconnect dc=new dconnect();
+			dc.setEmail(email);
 			
-			MongoDBTemperatureDAO temperatureDAO = new MongoDBTemperatureDAO(mongo);
+		/*	MongoDBTemperatureDAO temperatureDAO = new MongoDBTemperatureDAO(mongo);
             Temperature t=new Temperature();
             t=temperatureDAO.getTemperature(email);
 
@@ -73,11 +76,18 @@ import com.mongodb.MongoClient;
             }       
             
             response.setContentType("application/json");
-           PrintWriter out = response.getWriter();
+            PrintWriter out = response.getWriter();
             out.println(jsonArray);
             out.close();
 
-		
+		*/
+			request.setAttribute("email", email);
+
+		//	session.setAttribute("email", email);
+
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(
+					"/LinearChart.jsp");
+			rd.forward(request, response);
 	       
 	    }  
 

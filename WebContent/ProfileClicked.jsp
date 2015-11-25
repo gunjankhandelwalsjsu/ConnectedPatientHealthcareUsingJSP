@@ -40,21 +40,20 @@
 				<li><a href="home.jsp">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Topic <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Allergy</a></li>
-						<li><a href="#">Blood Pressure</a></li>
-						<li><a href="#">Sugar</a></li>
-					</ul></li>
+						<ul class="dropdown-menu">
+							<li><a href="FoodAllergy.jsp">Food Allergy</a></li>
+							<li><a href="BloodPressure.jsp">Blood Pressure</a></li>
+							<li><a href="Diabetics.jsp">Diabetics</a></li>
+						</ul></li>
 
 				<li><a href="Doctors.jsp">Doctors</a></li>
 
-				<li><a href="#">Patient</a></li>
 
 				<li><a href="aboutUs.jsp">About Us</a></li>
 
 				<li><a href="contact.jsp">Contact Us</a></li>
 
-				<li><a href="chart.jsp">Pie Chart</a></li>
+				<li><a href="LinearChart.jsp">Pie Chart</a></li>
 
 				<li><a href="Profile.jsp">My profile</a></li>
 
@@ -64,7 +63,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="Profile.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
-					<li><a href="MainSignUp.jsp"><span
+					<li><a href="${logOutURL}"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
 				</ul>
 			</div>

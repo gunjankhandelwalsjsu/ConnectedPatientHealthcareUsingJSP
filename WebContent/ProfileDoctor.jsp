@@ -39,12 +39,11 @@
 				<li><a href="home.jsp">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Topic <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Allergy</a></li>
-						<li><a href="#">Blood Pressure</a></li>
-						<li><a href="#">Sugar</a></li>
-					</ul></li>
-
+						<ul class="dropdown-menu">
+							<li><a href="FoodAllergy.jsp">Food Allergy</a></li>
+							<li><a href="BloodPressure.jsp">Blood Pressure</a></li>
+							<li><a href="Diabetics.jsp">Diabetics</a></li>
+						</ul></li>
 				<li><a href="contact.jsp">Contact Us</a></li>
 
 				<li><a href="ProfileDoctor.jsp">My profile</a></li>
@@ -55,7 +54,7 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="ProfileDoctor.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
-					<li><a href="MainSignUp.jsp"><span
+					<li><a href="${logOutURL}"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
 				</ul>
 			</div>
@@ -87,10 +86,10 @@
 		</c:url>
 		<c:url value="/deletePerson" var="deleteURL"></c:url>
 		<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
-<c:url var="getPhoto" value="/getPhoto" >
-          <c:param name="id" value="${doctor.id}"></c:param>
-          
-          </c:url>
+		<c:url var="getPhoto" value="/getPhoto">
+			<c:param name="id" value="${doctor.id}"></c:param>
+
+		</c:url>
 		<div class="row">
 
 			<div class="col-md-9">
@@ -108,7 +107,7 @@
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
 
-					
+
 					<div id="preview">
 						<img src="${getPhoto}" alt="Profile Photo"
 							style="float: center; margin-right: 15px; margin-bottom: 15px;" />

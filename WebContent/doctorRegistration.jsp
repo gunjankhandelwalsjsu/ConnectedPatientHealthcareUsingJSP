@@ -98,7 +98,7 @@ ul li{height:40px; margin:15px 0; list-style:none}
             </ul>         
         </form>
         <div class="sign">
-         <div class="need">Need new account ?</div>
+         <div class="need">Already a user ?</div>
          <div class="up"><a href="login.jsp">Login</a></div>
        </div>
     </c:if>

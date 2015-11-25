@@ -54,6 +54,10 @@ ul li{height:40px; margin:15px 0; list-style:none}
 
 
 </div>
+<div class="sign">
+<div class="need">Already a user ?</div>
+<div class="up"><a href="MainLogin.jsp">Sign Up</a></div>
+</div>
 
 </div>
 </body>
