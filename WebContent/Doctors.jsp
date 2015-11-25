@@ -192,7 +192,6 @@
                     <a href="contact.jsp" class="list-group-item active">Contact us</a>                    
                 </div>
                 
-                <a href="chart.jsp"><button class="btn btn-danger btn-block btn-lg" >Analytics</button></a>
             </div>
 
         </div>

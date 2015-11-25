@@ -18,14 +18,7 @@ public class SmsSender {
 	 public static final String AUTH_TOKEN = "082f81b4fa221d46fcb19474eeb98ddb"; 
 	 
 	 public static void sendSMS(List<NameValuePair> parameter) throws TwilioRestException { 
-		TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN); 
-	 
-		 // Build the parameters 
-		 List<NameValuePair> params = new ArrayList<NameValuePair>(); 
-		 params.add(new BasicNameValuePair("To", "+14086146313")); 
-		 params.add(new BasicNameValuePair("From", "+16509341358")); 
-		 params.add(new BasicNameValuePair("Body", "hii"));   
-	 
+		TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);  
 		 MessageFactory messageFactory = client.getAccount().getMessageFactory(); 
 		 Message message = messageFactory.create(parameter); 
 		 System.out.println(message.getSid()); 

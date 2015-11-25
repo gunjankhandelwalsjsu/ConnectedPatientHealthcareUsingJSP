@@ -129,7 +129,6 @@ For example, a blood pressure of 135 over 85 may be “normal” but someone wit
                     <a href="contact.jsp" class="list-group-item active">Contact us</a>                    
                 </div>
                 
-                <a href="chart.jsp"><button class="btn btn-danger btn-block btn-lg" >Analytics</button></a>
             </div>
 
         </div>

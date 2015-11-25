@@ -82,7 +82,7 @@ public class ImageServlet extends HttpServlet  {
 	      
 	      buffer.flush();
           byte[]imagenEnBytes = buffer.toByteArray();
-System.out.println("here");
+           System.out.println("here");
 	   
           response.setHeader("Accept-ranges","bytes");
           response.setContentType( "image/jpg" );

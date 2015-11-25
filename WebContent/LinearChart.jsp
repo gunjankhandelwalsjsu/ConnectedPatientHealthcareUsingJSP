@@ -74,7 +74,7 @@
 		<div class="row">
 
 			<div class="col-md-9">
-				<h1 style="margin-top: 0">Doctors Graph</h1>
+				<h1 style="margin-top: 0"> Temperature Analytics</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
 					<canvas id="canvas" height="0" width="250" style="margin: 0 auto;"></canvas>
@@ -215,8 +215,7 @@
 						href="contact.jsp" class="list-group-item active">Contact us</a>
 				</div>
 
-				<a href="chart.jsp"><button
-						class="btn btn-danger btn-block btn-lg">Analytics</button></a>
+				
 			</div>
 
 

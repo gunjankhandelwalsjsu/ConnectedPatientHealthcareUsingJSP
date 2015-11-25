@@ -24,6 +24,31 @@
 
 </head>
 <body>
+<c:if test="${requestScope.error ne null}">
+		<strong style="color: red;"><c:out
+				value="${requestScope.error}"></c:out></strong>
+	</c:if>
+	<c:if test="${requestScope.success ne null}">
+		<strong style="color: green;"><c:out
+				value="${requestScope.success}"></c:out></strong>
+	</c:if>
+	<c:url value="/editPerson" var="editURL"></c:url>
+	<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
+	<div class="container">
+	<c:url var="getPhoto" value="/getPhoto" >
+          <c:param name="id" value="${patient.id}"></c:param>
+          
+          </c:url>
+           <c:url var="getChart" value="/ChartServlet" >
+          <c:param name="id" value="${patient.id}"></c:param>         
+          </c:url>
+
+<c:url value="/displayPatientList" var="displayURL">
+			<c:param name="id" value="${doctor.id}"></c:param>
+		</c:url>
+		<div class="page-header" id="site-header">
+			<h1>Connected Patient Health Analytics Using Wearables</h1>
+		</div>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -54,7 +79,7 @@
 
 				<li><a href="contact.jsp">Contact Us</a></li>
 
-				<li><a href="LinearChart.jsp">Chart</a></li>
+				<li><a href="${getChart}">Chart</a></li>
 
 				<li><a href="ProfileDoctor.jsp">My profile</a></li>
 
@@ -72,28 +97,7 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container --> </nav>
-	<c:if test="${requestScope.error ne null}">
-		<strong style="color: red;"><c:out
-				value="${requestScope.error}"></c:out></strong>
-	</c:if>
-	<c:if test="${requestScope.success ne null}">
-		<strong style="color: green;"><c:out
-				value="${requestScope.success}"></c:out></strong>
-	</c:if>
-	<c:url value="/editPerson" var="editURL"></c:url>
-	<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
-	<div class="container">
-	<c:url var="getPhoto" value="/getPhoto" >
-          <c:param name="id" value="${patient.id}"></c:param>
-          
-          </c:url>
-
-<c:url value="/displayPatientList" var="displayURL">
-			<c:param name="id" value="${doctor.id}"></c:param>
-		</c:url>
-		<div class="page-header" id="site-header">
-			<h1>Connected Patient Health Analytics Using Wearables</h1>
-		</div>
+	
 
 
 

@@ -23,6 +23,26 @@
 
 </head>
 <body>
+	<c:if test="${requestScope.error ne null}">
+			<strong style="color: red;"><c:out
+					value="${requestScope.error}"></c:out></strong>
+		</c:if>
+		<c:if test="${requestScope.success ne null}">
+			<strong style="color: green;"><c:out
+					value="${requestScope.success}"></c:out></strong>
+		</c:if>
+		<c:url value="/displayPatientList" var="displayURL">
+			<c:param name="id" value="${doctor.id}"></c:param>
+		</c:url>
+		<c:url value="/EditDoctorProfile.jsp" var="editURL">
+			<c:param name="id" value="${doctor.id}"></c:param>
+		</c:url>
+		<c:url value="/deletePerson" var="deleteURL"></c:url>
+		<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
+		<c:url var="getPhoto" value="/getPhoto">
+			<c:param name="id" value="${doctor.id}"></c:param>
+
+		</c:url>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -70,26 +90,7 @@
 		</div>
 
 
-		<c:if test="${requestScope.error ne null}">
-			<strong style="color: red;"><c:out
-					value="${requestScope.error}"></c:out></strong>
-		</c:if>
-		<c:if test="${requestScope.success ne null}">
-			<strong style="color: green;"><c:out
-					value="${requestScope.success}"></c:out></strong>
-		</c:if>
-		<c:url value="/displayPatientList" var="displayURL">
-			<c:param name="id" value="${doctor.id}"></c:param>
-		</c:url>
-		<c:url value="/EditDoctorProfile.jsp" var="editURL">
-			<c:param name="id" value="${doctor.id}"></c:param>
-		</c:url>
-		<c:url value="/deletePerson" var="deleteURL"></c:url>
-		<c:url value="/clickedProfileDoctor" var="clickedProfile"></c:url>
-		<c:url var="getPhoto" value="/getPhoto">
-			<c:param name="id" value="${doctor.id}"></c:param>
-
-		</c:url>
+	
 		<div class="row">
 
 			<div class="col-md-9">

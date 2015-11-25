@@ -80,7 +80,7 @@ public class AddDoctorToPatientProfile extends HttpServlet {
 		p.setDoctor(d);
 		p.setDoctorName(d.getName());
 		p.setDoctorMailId(d.getEmail());
-		p.setdPhone(d.getId());
+		p.setdPhone(d.getPhone());
 		patientDAO.updatePatientWithDoctor(p);
 		Patient pat = new Patient();
 		pat = patientDAO.readPatient(p);

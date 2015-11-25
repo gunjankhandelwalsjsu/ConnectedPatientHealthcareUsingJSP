@@ -113,8 +113,17 @@
 
 					
 					<div id="preview">
-						<img src="${getPhoto}" alt="Profile Photo"
-							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+					     <c:if test="${Patient.gender eq 'M'}">
+					
+							<img src="${getPhoto}" alt="Profile Photo" onerror="if (this.src != 'images/male.jpg') this.src = 'images/male.jpg';"
+								style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+						
+                          </c:if>
+                        <c:if test="${Patient.gender eq 'F'}">
+                        <img src="${getPhoto}" alt="Profile Photo" onerror="if (this.src != 'images/female.jpg') this.src = 'images/female.jpg';"
+								style="float: center; margin-right: 15px; margin-bottom: 15px;" />
+						
+                          </c:if>
 					</div>
 
 					<p></p>
@@ -134,8 +143,8 @@
 							</p>
                              <p>
                              
-                             <input type="radio" name="gender" value="male">Male<br>
-                             <input type="radio" name="gender" value="female">Female
+                             <input type="radio" name="gender" value="M">Male<br>
+                             <input type="radio" name="gender" value="F">Female
 								
 							</p>
 							<p>

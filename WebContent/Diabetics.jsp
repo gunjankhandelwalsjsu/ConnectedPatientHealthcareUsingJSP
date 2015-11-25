@@ -134,7 +134,6 @@ The risk of developing type 2 diabetes is also greater as we get older. Experts 
                     <a href="contact.jsp" class="list-group-item active">Contact us</a>                    
                 </div>
                 
-                <a href="chart.jsp"><button class="btn btn-danger btn-block btn-lg" >Analytics</button></a>
             </div>
 
         </div>

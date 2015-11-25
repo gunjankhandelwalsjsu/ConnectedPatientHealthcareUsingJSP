@@ -24,6 +24,28 @@
 
 </head>
 <body>
+<c:if test="${requestScope.error ne null}">
+			<strong style="color: red;"><c:out
+					value="${requestScope.error}"></c:out></strong>
+		</c:if>
+		<c:if test="${requestScope.success ne null}">
+			<strong style="color: green;"><c:out
+					value="${requestScope.success}"></c:out></strong>
+		</c:if>
+		<c:url value="/editPerson" var="editURL"></c:url>
+		<c:url value="/clickedProfile" var="clickedProfile"></c:url>
+
+		<c:url value="/addDoctorToPatientProfile"
+			var="addDoctorToPatientProfileURL">
+			<c:param name="id" value="${doctor.id}"></c:param>
+		</c:url>
+		<c:url var="getPhoto" value="/getPhoto">
+			<c:param name="id" value="${doctor.id}"></c:param>
+
+		</c:url>
+		 <c:url var="getChart" value="/ChartServlet" >
+          <c:param name="id" value="${Patient.id}"></c:param>         
+          </c:url>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -40,11 +62,11 @@
 				<li><a href="home.jsp">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Topic <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="FoodAllergy.jsp">Food Allergy</a></li>
-							<li><a href="BloodPressure.jsp">Blood Pressure</a></li>
-							<li><a href="Diabetics.jsp">Diabetics</a></li>
-						</ul></li>
+					<ul class="dropdown-menu">
+						<li><a href="FoodAllergy.jsp">Food Allergy</a></li>
+						<li><a href="BloodPressure.jsp">Blood Pressure</a></li>
+						<li><a href="Diabetics.jsp">Diabetics</a></li>
+					</ul></li>
 
 				<li><a href="Doctors.jsp">Doctors</a></li>
 
@@ -53,8 +75,7 @@
 
 				<li><a href="contact.jsp">Contact Us</a></li>
 
-				<li><a href="LinearChart.jsp">Pie Chart</a></li>
-
+				<li><a href="${getChart}">Chart</a></li>
 				<li><a href="Profile.jsp">My profile</a></li>
 
 			</ul>
@@ -79,26 +100,7 @@
 		</div>
 
 
-		<c:if test="${requestScope.error ne null}">
-			<strong style="color: red;"><c:out
-					value="${requestScope.error}"></c:out></strong>
-		</c:if>
-		<c:if test="${requestScope.success ne null}">
-			<strong style="color: green;"><c:out
-					value="${requestScope.success}"></c:out></strong>
-		</c:if>
-		<c:url value="/editPerson" var="editURL"></c:url>
-		<c:url value="/clickedProfile" var="clickedProfile"></c:url>
-         
-		<c:url value="/addDoctorToPatientProfile"
-			var="addDoctorToPatientProfileURL">
-			<c:param name="id" value="${doctor.id}"></c:param>
-		</c:url>
-		 <c:url var="getPhoto" value="/getPhoto" >
-          <c:param name="id" value="${doctor.id}"></c:param>
-          
-          </c:url>
-
+		
 		<div class="row">
 
 			<div class="col-md-9">
@@ -116,7 +118,7 @@
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
 
-					
+
 					<div id="preview">
 						<img src="${getPhoto}" alt="Profile Photo"
 							style="float: center; margin-right: 15px; margin-bottom: 15px;" />
@@ -126,30 +128,31 @@
 					<br /> <br /> <br />
 
 
-				<c:if test="${doctor ne null}">
-					<center>
-						<h3>General Info of ${doctor.firstName} requested</h3>
-					</center>
-					<ul>
-						<li><b> Name:</b>${doctor.firstName} ${doctor.lastName}</li>
-						<li><b> Prior Experience:</b> Midtown Medical Center, New
-							York, NY</li>
-						<li><b> Residency:</b> Internal Medicine,San Fransisco,CA</li>
-					</ul>
-					
-					<center>
-						<h3>Contact Info</h3>
-					</center>         
-					<address>
+					<c:if test="${doctor ne null}">
+						<center>
+							<h3>General Info of ${doctor.firstName} requested</h3>
+						</center>
 						<ul>
-							<li><b> Email:</b>${doctor.email}</li>
-							<li><b> Phone:</b> ${doctor.phone}</li>
-							<li><b> Address:</b>${doctor.streetAddress}<br>${doctor.city}<br>${doctor.state}<br>${doctor.zipcode}</li>
+							<li><b> Name:</b>${doctor.firstName} ${doctor.lastName}</li>
+							<li><b> Prior Experience:</b> Midtown Medical Center, New
+								York, NY</li>
+							<li><b> Residency:</b> Internal Medicine,San Fransisco,CA</li>
 						</ul>
-						<br /> <br /> <b>office hours:</b> <br /> Monday-Thursday :
-						8.30am to 5.pm Friday-8.30am to 3.30pm
-					</address>
-					<center>
+
+						<center>
+							<h3>Contact Info</h3>
+						</center>
+						<address>						
+							<ul>
+							
+								<li><b> Email:</b>${doctor.email}</li>
+								<li><b> Phone:</b> ${doctor.phone}</li>
+								<li><b> Address:</b>${doctor.streetAddress}<br>${doctor.city}<br>${doctor.state}<br>${doctor.zipcode}</li>
+							</ul>
+							<br /> <br /> <b>office hours:</b> <br /> Monday-Thursday :
+							8.30am to 5.pm Friday-8.30am to 3.30pm
+						</address>
+						<center>
 							<h3>Specializations</h3>
 						</center>
 
@@ -164,48 +167,48 @@
 						</c:if>
 
 
-					<form
-						action='<c:out value="${addDoctorToPatientProfileURL}"></c:out>'
-						method="post">
+						<form
+							action='<c:out value="${addDoctorToPatientProfileURL}"></c:out>'
+							method="post">
 
-						<center>
-							<h3>
-								<input type="submit" value="Add doctor">
-							</h3>
-						</center>
-					</form>
-				</c:if>
+							<center>
+								<h3>
+									<input type="submit" value="Add doctor">
+								</h3>
+							</center>
+						</form>
+					</c:if>
 
+				</div>
 			</div>
-		</div>
 
 
 
-		<div class="col-md-3">
-			<p class="lead">Side Bar Links</p>
-			<div class="list-group">
-				<a href="#" class="list-group-item active">
-					<h4 class="list-group-item-heading">List Of Doctors</h4>
-				</a>
-				<c:if test="${not empty doctors}">
-					<c:forEach items="${doctors}" var="doctor">
-						<c:url value="/clickedProfile" var="clickedProfile">
-							<c:param name="id" value="${doctor.id}"></c:param>
-						</c:url>
+			<div class="col-md-3">
+				<p class="lead">Side Bar Links</p>
+				<div class="list-group">
+					<a href="#" class="list-group-item active">
+						<h4 class="list-group-item-heading">List Of Doctors</h4>
+					</a>
+					<c:if test="${not empty doctors}">
+						<c:forEach items="${doctors}" var="doctor">
+							<c:url value="/clickedProfile" var="clickedProfile">
+								<c:param name="id" value="${doctor.id}"></c:param>
+							</c:url>
 
-						<a href="${clickedProfile}" class="list-group-item"><c:out
-								value="${doctor.firstName}"></c:out></a>
-
-
-					</c:forEach>
-				</c:if>
+							<a href="${clickedProfile}" class="list-group-item"><c:out
+									value="${doctor.firstName}"></c:out></a>
 
 
+						</c:forEach>
+					</c:if>
+
+
+				</div>
 			</div>
+
+
 		</div>
-
-
-	</div>
 
 	</div>
 

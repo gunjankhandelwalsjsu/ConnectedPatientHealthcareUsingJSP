@@ -136,7 +136,6 @@ The job of the body’s immune system is to identify and destroy germs (such as 
                     <a href="contact.jsp" class="list-group-item active">Contact us</a>                    
                 </div>
                 
-                <a href="chart.jsp"><button class="btn btn-danger btn-block btn-lg" >Analytics</button></a>
             </div>
 
         </div>
