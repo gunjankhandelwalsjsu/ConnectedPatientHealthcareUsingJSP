@@ -94,7 +94,6 @@
 						System.out.println(email);
 						DBCursor cursor = collection.find(query);
 						System.out.println("cursor"+cursor.toString());
-
 						try {
 							int i = 0;
 							while (cursor.hasNext()) {
@@ -109,14 +108,11 @@
 						//System.out.println(anArray[0].isEmpty());
 						int timeIndexStart = anArray[0].indexOf('[');
 						System.out.println("cursor "+anArray[0]);
-
 						int timeIndexEnd = anArray[0].indexOf(']');
 						int temperatureIndexStart = anArray[0].indexOf('[', timeIndexStart + 1);
 						int temperatureIndexEnd = anArray[0].indexOf(']', timeIndexEnd + 1);
 						String actualTimes = anArray[0].substring(timeIndexStart, timeIndexEnd + 1);
-
 						 actualTemperatures = anArray[0].substring(temperatureIndexStart, temperatureIndexEnd + 1);
-
 						int currentT = 0;
 						int avance = 0;
 						int tempIndex = anArray[0].indexOf("temperature");
@@ -126,20 +122,18 @@
 						while (toStop == 0) {
 							currentT = anArray[0].indexOf('T', avance);
 							avance = currentT + 1;
-							if (avance == (tempIndex - 20))
+							
+							if (avance == (tempIndex - 19))
 								toStop = -1;
 							System.out.println("cursor"+tiempoReal);
-
-							tiempoReal = tiempoReal + "\'" + anArray[0].substring(0, currentT + 6) + "\', ";
+							tiempoReal = tiempoReal + "\'" + anArray[0].substring(currentT-10, currentT + 6) + "\', ";
 							
 						}
 						System.out.println("cursor"+tiempoReal);
-
 						tiempoReal = tiempoReal.substring(0, tiempoReal.length() - 2);
 						tiempoReal = "[" + tiempoReal + "]";
 						
 						
-
 						
 						//DBObject doc = collection.findOne(query);
 					%>
@@ -147,15 +141,12 @@
 						style="width: 550px; height: 400px; margin: 0 auto"></div>
 					<script language="JavaScript">
 						var patient = "${email}";
-
 						var dates =
 					<%=tiempoReal%>
 						;
-
 						var temperatures =
 					<%=actualTemperatures%>
 						;
-
 						$(document).ready(function() {
 							var title = {
 								text : 'Temperatures of Patient'
@@ -179,33 +170,27 @@
 									color : '#808080'
 								} ]
 							};
-
 							var tooltip = {
 								valueSuffix : '\xB0C'
 							}
-
 							var legend = {
 								layout : 'horizontal',
 								align : 'center',
 								horizontalAlign : 'bottom',
 								borderWidth : 0
 							};
-
 							var series = [ {
 								name : 'Patient: ' + patient,
 								data : temperatures
 							} ];
-
 							var json = {};
 							json.tooltip = tooltip;
 							json.title = title;
 							json.subtitle = subtitle;
 							json.xAxis = xAxis;
 							json.yAxis = yAxis;
-
 							json.legend = legend;
 							json.series = series;
-
 							$('#container').highcharts(json);
 						});
 					</script>
