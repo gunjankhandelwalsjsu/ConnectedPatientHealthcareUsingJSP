@@ -17,7 +17,8 @@
 	<context-param>
 		<param-name>mongoURI</param-name>
 		<param-value>
-                 mongodb://gunjan:khandelwal@ds051933.mongolab.com:51933/healthdb
+		
+ mongodb://gunjan:khandelwal@ds059284.mongolab.com:59284/journaldev
  		</param-value>
 	</context-param>
 	

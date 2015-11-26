@@ -84,7 +84,8 @@
 					<%
 						String[] anArray;
 						anArray = new String[10];
-
+						String tiempoReal = "";
+						String actualTemperatures;
 						dconnect mymongo = dconnect.createInstance();
 						String email = (String)request.getAttribute("email");
      					DBCollection collection = mymongo.getCollection("Temperatures");
@@ -92,40 +93,54 @@
 						query.put("email", email);
 						System.out.println(email);
 						DBCursor cursor = collection.find(query);
+						System.out.println("cursor"+cursor.toString());
+
 						try {
 							int i = 0;
 							while (cursor.hasNext()) {
+								//System.out.println("empty ");
 								anArray[i] = cursor.next().toString();
 								i++;
 							}
+							
 						} finally {
 							cursor.close();
 						}
+						//System.out.println(anArray[0].isEmpty());
 						int timeIndexStart = anArray[0].indexOf('[');
+						System.out.println("cursor "+anArray[0]);
+
 						int timeIndexEnd = anArray[0].indexOf(']');
 						int temperatureIndexStart = anArray[0].indexOf('[', timeIndexStart + 1);
 						int temperatureIndexEnd = anArray[0].indexOf(']', timeIndexEnd + 1);
 						String actualTimes = anArray[0].substring(timeIndexStart, timeIndexEnd + 1);
-						String actualTemperatures = anArray[0].substring(temperatureIndexStart, temperatureIndexEnd + 1);
+
+						 actualTemperatures = anArray[0].substring(temperatureIndexStart, temperatureIndexEnd + 1);
 
 						int currentT = 0;
 						int avance = 0;
 						int tempIndex = anArray[0].indexOf("temperature");
 						int toStop = 0;
-						String tiempoReal = "";
-						String[] actualTime;
-						actualTime = new String[10];
-
+						
+						
 						while (toStop == 0) {
 							currentT = anArray[0].indexOf('T', avance);
 							avance = currentT + 1;
 							if (avance == (tempIndex - 20))
 								toStop = -1;
+							System.out.println("cursor"+tiempoReal);
 
-							tiempoReal = tiempoReal + "\'" + anArray[0].substring(currentT - 10, currentT + 6) + "\', ";
+							tiempoReal = tiempoReal + "\'" + anArray[0].substring(0, currentT + 6) + "\', ";
+							
 						}
+						System.out.println("cursor"+tiempoReal);
+
 						tiempoReal = tiempoReal.substring(0, tiempoReal.length() - 2);
 						tiempoReal = "[" + tiempoReal + "]";
+						
+						
+
+						
 						//DBObject doc = collection.findOne(query);
 					%>
 					<div id="container"
@@ -194,7 +209,6 @@
 							$('#container').highcharts(json);
 						});
 					</script>
-
 
 				<a class="btn btn-block btn-primary" href="FoodAllergy.jsp"
 					style="margin-top: 20px;">&leftarrow; Go Back</a>

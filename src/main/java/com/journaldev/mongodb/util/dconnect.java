@@ -7,8 +7,7 @@ package com.journaldev.mongodb.util;
 	
 public class dconnect
 {
-	final String HOST="localhost";
-	final int PORT=27017;
+	
 	final String DBNAME="journaldev";
 	public static dconnect instance;
 	public Mongo connection;
@@ -17,8 +16,13 @@ public class dconnect
 
 	public dconnect() throws UnknownHostException
 	{
-		this.connection=new Mongo(this.HOST, this.PORT);
-		this.database=this.connection.getDB(this.DBNAME);
+		
+		
+		 String textUri = "mongodb://gunjan:khandelwal@ds059284.mongolab.com:59284/journaldev";
+         MongoClientURI uri = new MongoClientURI(textUri);
+         MongoClient mongo = null;
+ 		 mongo = new MongoClient(uri);		
+		this.database=mongo.getDB(DBNAME);
 	}
 	
 	public static dconnect createInstance() throws UnknownHostException
