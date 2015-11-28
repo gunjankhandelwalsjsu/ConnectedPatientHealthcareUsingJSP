@@ -18,7 +18,7 @@ public class dconnect
 	{
 		
 		
-		 String textUri = "mongodb://gunjan:khandelwal@ds059284.mongolab.com:59284/journaldev";
+		 String textUri = "mongodb://gunjan:khandelwal@ds059284.mongolab.com:59284/journaldev?authMode=scram-sha1";
          MongoClientURI uri = new MongoClientURI(textUri);
          MongoClient mongo = null;
  		 mongo = new MongoClient(uri);		

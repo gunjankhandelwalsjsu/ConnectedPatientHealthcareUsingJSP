@@ -125,13 +125,13 @@
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
 					<div id="preview">
-					     <c:if test="${Patient.gender eq 'M'}">
+					     <c:if test="${Patient.gender eq 'Male'}">
 					
 							<img src="${getPhoto}" alt="Profile Photo" onerror="if (this.src != 'images/male.jpg') this.src = 'images/male.jpg';"
 								style="float: center; margin-right: 15px; margin-bottom: 15px;" />
 						
                           </c:if>
-                        <c:if test="${Patient.gender eq 'F'}">
+                        <c:if test="${Patient.gender eq 'Female'}">
                         <img src="${getPhoto}" alt="Profile Photo" onerror="if (this.src != 'images/female.jpg') this.src = 'images/female.jpg';"
 								style="float: center; margin-right: 15px; margin-bottom: 15px;" />
 						

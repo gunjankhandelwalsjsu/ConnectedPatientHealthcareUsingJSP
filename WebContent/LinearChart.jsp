@@ -54,6 +54,8 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="Profile.jsp"><span
 							class="glyphicon glyphicon-user"></span> My Account</a></li>
+							<c:url value="/logout" var="logOutURL">
+					</c:url>
 					<li><a href="${logOutURL}"><span
 							class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
 				</ul>
@@ -77,13 +79,10 @@
 				<h1 style="margin-top: 0"> Temperature Analytics</h1>
 				<div class="clearfix"
 					style="text-align: justify; padding: 20px; background: #eee; border: 2px solid #bbb; border-radius: 10px;">
-					<canvas id="canvas" height="0" width="250" style="margin: 0 auto;"></canvas>
-
-                      
+					<canvas id="canvas" height="0" width="250" style="margin: 0 auto;"></canvas>        
 
 					<%
-						String[] anArray;
-						anArray = new String[10];
+						String anString = "";
 						String tiempoReal = "";
 						String actualTemperatures;
 						dconnect mymongo = dconnect.createInstance();
@@ -93,60 +92,56 @@
 						query.put("email", email);
 						System.out.println(email);
 						DBCursor cursor = collection.find(query);
-						System.out.println("cursor"+cursor.toString());
 						try {
-							int i = 0;
 							while (cursor.hasNext()) {
-								//System.out.println("empty ");
-								anArray[i] = cursor.next().toString();
-								i++;
+								anString = cursor.next().toString();
 							}
 							
 						} finally {
 							cursor.close();
-						}
+						};
+						if (anString != "")
+						{	
 						//System.out.println(anArray[0].isEmpty());
-						int timeIndexStart = anArray[0].indexOf('[');
-						System.out.println("cursor "+anArray[0]);
-						int timeIndexEnd = anArray[0].indexOf(']');
-						int temperatureIndexStart = anArray[0].indexOf('[', timeIndexStart + 1);
-						int temperatureIndexEnd = anArray[0].indexOf(']', timeIndexEnd + 1);
-						String actualTimes = anArray[0].substring(timeIndexStart, timeIndexEnd + 1);
-						 actualTemperatures = anArray[0].substring(temperatureIndexStart, temperatureIndexEnd + 1);
+						int timeIndexStart = anString.indexOf('[');
+						int timeIndexEnd = anString.indexOf(']');
+						int temperatureIndexStart = anString.indexOf('[', timeIndexStart + 1);
+						int temperatureIndexEnd = anString.indexOf(']', timeIndexEnd + 1);
+						String actualTimes = anString.substring(timeIndexStart, timeIndexEnd + 1);
+						 actualTemperatures = anString.substring(temperatureIndexStart, temperatureIndexEnd + 1);
 						int currentT = 0;
 						int avance = 0;
-						int tempIndex = anArray[0].indexOf("temperature");
+						int tempIndex = anString.indexOf("temperature");
 						int toStop = 0;
 						
 						
 						while (toStop == 0) {
-							currentT = anArray[0].indexOf('T', avance);
+							currentT = anString.indexOf('T', avance);
 							avance = currentT + 1;
 							
 							if (avance == (tempIndex - 19))
 								toStop = -1;
 							System.out.println("cursor"+tiempoReal);
-							tiempoReal = tiempoReal + "\'" + anArray[0].substring(currentT-10, currentT + 6) + "\', ";
+							tiempoReal = tiempoReal + "\'" + anString.substring(currentT-10, currentT + 6) + "\', ";
 							
 						}
 						System.out.println("cursor"+tiempoReal);
 						tiempoReal = tiempoReal.substring(0, tiempoReal.length() - 2);
 						tiempoReal = "[" + tiempoReal + "]";
-						
-						
-						
+					    }
+						else
+						{
+							actualTemperatures="";
+							tiempoReal="";
+						}
 						//DBObject doc = collection.findOne(query);
 					%>
 					<div id="container"
 						style="width: 550px; height: 400px; margin: 0 auto"></div>
 					<script language="JavaScript">
 						var patient = "${email}";
-						var dates =
-					<%=tiempoReal%>
-						;
-						var temperatures =
-					<%=actualTemperatures%>
-						;
+						var dates = <%=tiempoReal%>;
+						var temperatures = <%=actualTemperatures%>;
 						$(document).ready(function() {
 							var title = {
 								text : 'Temperatures of Patient'

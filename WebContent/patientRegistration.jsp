@@ -234,8 +234,8 @@ ul li {
 
 						<p>Gender</p>
 						<li><span class="un"><i class="fa fa-user"></i></span></span> <input
-							type="radio" name="gender" value="male" checked="checked">M <input
-							type="radio" name="gender" value="female">F</li>
+							type="radio" name="gender" value="male" checked="checked">Male <input
+							type="radio" name="gender" value="female">Female</li>
 
 
 						<li><span class="un"><i class="fa fa-user"></i></span><input
